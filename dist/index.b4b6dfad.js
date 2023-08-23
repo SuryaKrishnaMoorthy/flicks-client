@@ -2943,20 +2943,19 @@ $parcel$ReactRefreshHelpers$98a3.prelude(module);
 try {
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
+var _mainView = require("./components/mainView");
 var _indexScss = require("./index.scss");
 const FlicksApp = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "flicks",
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: "Good Morning"
-        }, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
             fileName: "src/index.jsx",
-            lineNumber: 7,
+            lineNumber: 8,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 6,
+        lineNumber: 7,
         columnNumber: 5
     }, undefined);
 };
@@ -2965,7 +2964,7 @@ const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(FlicksApp, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 14,
+    lineNumber: 15,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2976,7 +2975,7 @@ $RefreshReg$(_c, "FlicksApp");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jyDkD"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jyDkD","./components/mainView":"cOxrE"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -27299,6 +27298,1236 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"7c3c7a0e00d2fccf":"2zOvF"}]},["lEMiX","iEx1f","d8Dch"], "d8Dch", "parcelRequire9b2c")
+},{"7c3c7a0e00d2fccf":"2zOvF"}],"cOxrE":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$0b57 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$0b57.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MainView", ()=>MainView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _movies = require("../../assets/movies");
+var _movieCard = require("./movieCard");
+var _movieView = require("./movieView");
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const [moviesList, setMoviesList] = (0, _react.useState)((0, _movies.movies));
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const handleBackClick = ()=>setSelectedMovie(null);
+    const handleClick = (movie)=>{
+        setSelectedMovie(movie);
+    };
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+        movie: selectedMovie,
+        handleBackClick: handleBackClick
+    }, void 0, false, {
+        fileName: "src/components/mainView.jsx",
+        lineNumber: 18,
+        columnNumber: 12
+    }, undefined);
+    if (!moviesList.length) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
+        children: "No movies found!"
+    }, void 0, false, {
+        fileName: "src/components/mainView.jsx",
+        lineNumber: 22,
+        columnNumber: 12
+    }, undefined);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: moviesList.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                onMovieClick: handleClick,
+                movie: movie
+            }, movie._id, false, {
+                fileName: "src/components/mainView.jsx",
+                lineNumber: 27,
+                columnNumber: 35
+            }, undefined))
+    }, void 0, false, {
+        fileName: "src/components/mainView.jsx",
+        lineNumber: 26,
+        columnNumber: 5
+    }, undefined);
+};
+_s(MainView, "2huhqUFbKBbUzWyL9w/tKqH97sg=");
+_c = MainView;
+var _c;
+$RefreshReg$(_c, "MainView");
+
+  $parcel$ReactRefreshHelpers$0b57.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./movieCard":"e9qam","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jyDkD","../../assets/movies":"bAHzd","./movieView":"5v5wC"}],"e9qam":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5817 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5817.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const MovieCard = ({ movie, onMovieClick })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+        style: {
+            width: "70%",
+            border: "none",
+            borderBottom: "1px solid grey"
+        },
+        onClick: ()=>onMovieClick(movie),
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                children: movie.Title
+            }, void 0, false, {
+                fileName: "src/components/movieCard.jsx",
+                lineNumber: 8,
+                columnNumber: 9
+            }, undefined)
+        }, void 0, false, {
+            fileName: "src/components/movieCard.jsx",
+            lineNumber: 7,
+            columnNumber: 7
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/movieCard.jsx",
+        lineNumber: 3,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieCard;
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$5817.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jyDkD"}],"hBaJv":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"bAHzd":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "movies", ()=>movies);
+const movies = [
+    {
+        Genre: {
+            Name: "Thriller",
+            Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "Jonathan Demme",
+            Bio: "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+            Birth: "1970-01-01T00:00:01.920Z",
+            Death: "1970-01-01T00:00:01.987Z",
+            moviesDirected: [
+                "Beloved Buena",
+                "The Truth About Charlie",
+                "The Manchurian Candidate",
+                "Rachel Getting Married",
+                "A Master Builder",
+                "Ricki and the Flash"
+            ]
+        },
+        _id: "64acb018477cd1343bf31702",
+        Title: "Silence of the Lambs",
+        Description: "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer.",
+        ImagePath: "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+        Featured: true,
+        Actors: [
+            "Jodie Foster",
+            "Anthony Hopkins",
+            "Lawrence A. Bonney"
+        ],
+        Rating: "8.6",
+        ReleaseYear: "1991"
+    },
+    {
+        Genre: {
+            Name: "Comedy",
+            Description: "Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "Rob Minkoff",
+            Bio: "Rob Minkoff was born on August 11, 1962 in Palo Alto, California, USA. He is a producer and director, known for The Lion King (1994), Stuart Little 2 (2002) and The Haunted Mansion (2003). He has been married to Crystal Kung Minkoff since September 29, 2007.",
+            Birthday: "1962-08-11T00:00:00.000Z",
+            moviesDirected: [
+                "The Lion King",
+                "Stuart Little",
+                "Stuart Little 2",
+                "The Haunted Mansion",
+                "The Forbidden Kingdom",
+                "Flypaper"
+            ]
+        },
+        _id: "64ad5724477cd1343bf31705",
+        Title: "Stuart Little",
+        Description: "When the Littles go to an orphanage to adopt a new family member, a charming young mouse named Stuart is chosen.",
+        ImagePath: "stuartlittle.png",
+        Featured: false,
+        Actors: [
+            "Michael J. Fox",
+            "Geena Davis",
+            "Hugh Laurie"
+        ],
+        ReleaseYear: "1999",
+        Rating: "6"
+    },
+    {
+        Genre: {
+            Name: "Thriller",
+            Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "David Fincher",
+            Bio: "David Fincher was born in 1962 in Denver, Colorado, and was raised in Marin County, California. When he was 18 years old, he worked for John Korty at Korty Films in Mill Valley. He worked at ILM (Industrial Light and Magic) from 1981 to 1983. Fincher left ILM to direct TV commercials and music videos after signing with N. Lee Lacy in Hollywood. He founded Propaganda in 1987 with fellow directors Dominic Sena, Greg Gold, and Nigel Dick. Fincher has directed TV commercials for clients that include Nike, Coca-Cola, Budweiser, Heineken, Pepsi, Levi's, Converse, AT&T, and Chanel. He has directed music videos for Madonna, Sting, The Rolling Stones, Michael Jackson, Aerosmith, George Michael, Iggy Pop, The Wallflowers, Billy Idol, Steve Winwood, The Motels, and, most recently, A Perfect Circle.",
+            Birthday: "1962-08-28T00:00:00.000Z",
+            moviesDirected: [
+                "Alien 3",
+                "Seven",
+                "The Game",
+                "Fight Club",
+                "Panic Room",
+                "Zodiac"
+            ]
+        },
+        _id: "64ad5724477cd1343bf31707",
+        Title: "The Game",
+        Description: "After a wealthy San Francisco banker is given an opportunity to participate in a mysterious game, his life is turned upside down as he begins to question if it might really be a concealed conspiracy to destroy him.",
+        ImagePath: "thegame.png",
+        Featured: false,
+        Actors: [
+            "Michael Douglas",
+            "Deborah Kara Unger",
+            "Sean Penn",
+            "James Rebhorn"
+        ],
+        ReleaseYear: "1997",
+        Rating: "7.7"
+    },
+    {
+        Genre: {
+            Name: "Comedy",
+            Description: "Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "David Frankel",
+            Bio: "David Frankel was born on April 2, 1959, in New York City, New York, USA. He is a production manager and producer known for The Devil Wears Prada (2006), One Chance (2013), and Band of Brothers (2001).",
+            Birthday: "1959-04-02T00:00:00.000Z",
+            moviesDirected: [
+                "Miami Rhapsody",
+                "The Devil Wears Prada",
+                "Marley & Me",
+                "The Big Year",
+                "Hope Springs",
+                "One Chance",
+                "Collateral Beauty",
+                "Jerry & Marge Go Large"
+            ]
+        },
+        _id: "64ad5724477cd1343bf31706",
+        Title: "The Devil Wears Prada",
+        Description: "A smart but sensible new graduate lands a job as an assistant to Miranda Priestly, the demanding editor-in-chief of a high fashion magazine.",
+        ImagePath: "thedevilwearsprada.png",
+        Actors: [
+            "Anne Hathaway",
+            "Meryl Streep",
+            "Adrian Grenier",
+            "Emily Blunt"
+        ],
+        ReleaseYear: "2006",
+        Rating: "6.9"
+    },
+    {
+        Genre: {
+            Name: "Comedy",
+            Description: "Comedy is a genre of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "James Gunn",
+            Bio: "James Gunn was born and raised in St. Louis, Missouri, to Leota and James Francis Gunn. He is from a large Catholic family, with Irish and Czech ancestry. His father and his uncles were all lawyers. He has been writing and performing as long as he can remember. He began making 8mm films at the age of twelve. Many of these were comedic splatter films featuring his brothers being disemboweled by zombies. He attended Saint Louis University High (SLUH) college preparatory school but later dropped out of college to pursue a rock and roll career.",
+            Birthday: "1966-08-05T00:00:00.000Z",
+            moviesDirected: [
+                "The Suicide Squad",
+                "Guardians of the Galaxy Vol. 3",
+                "Superman: Legacy"
+            ]
+        },
+        _id: "64ad5724477cd1343bf3170a",
+        Title: "Guardians of the Galaxy Vol. 3",
+        Description: "Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.",
+        ImagePath: "guardiansofgalaxy.png",
+        Featured: false,
+        Actors: [
+            "Chris Pratt",
+            "Chukwudi Iwuji",
+            "Bradley Cooper",
+            "Pom Klementieff"
+        ],
+        ReleaseYear: "2023",
+        Rating: "8.1"
+    },
+    {
+        Genre: {
+            Name: "Animated",
+            Description: "Animation is a method in which pictures are manipulated to appear as moving images. In traditional animation, images are drawn or painted by hand on transparent celluloid sheets to be photographed and exhibited on film."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "Rob Minkoff",
+            Bio: "Rob Minkoff was born on August 11, 1962 in Palo Alto, California, USA. He is a producer and director, known for The Lion King (1994), Stuart Little 2 (2002) and The Haunted Mansion (2003). He has been married to Crystal Kung Minkoff since September 29, 2007.",
+            Birthday: "1962-08-11T00:00:00.000Z",
+            moviesDirected: [
+                "The Lion King",
+                "Stuart Little",
+                "Stuart Little 2",
+                "The Haunted Mansion",
+                "The Forbidden Kingdom",
+                "Flypaper"
+            ]
+        },
+        _id: "64ad5724477cd1343bf31704",
+        Title: "The Lion King",
+        Description: "This Disney animated feature follows the adventures of the young lion Simba.",
+        ImagePath: "thelionking.png",
+        Featured: false,
+        Actors: [
+            "Matthew Broderick",
+            "Jeremy Irons",
+            "James Earl Jones"
+        ],
+        ReleaseYear: "1994",
+        Rating: "8.5"
+    },
+    {
+        Genre: {
+            Name: "Thriller",
+            Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "David Fincher",
+            Bio: "David Fincher was born in 1962 in Denver, Colorado, and was raised in Marin County, California. When he was 18 years old, he worked for John Korty at Korty Films in Mill Valley. He worked at ILM (Industrial Light and Magic) from 1981 to 1983. Fincher left ILM to direct TV commercials and music videos after signing with N. Lee Lacy in Hollywood. He founded Propaganda in 1987 with fellow directors Dominic Sena, Greg Gold, and Nigel Dick. Fincher has directed TV commercials for clients that include Nike, Coca-Cola, Budweiser, Heineken, Pepsi, Levi's, Converse, AT&T, and Chanel. He has directed music videos for Madonna, Sting, The Rolling Stones, Michael Jackson, Aerosmith, George Michael, Iggy Pop, The Wallflowers, Billy Idol, Steve Winwood, The Motels, and, most recently, A Perfect Circle.",
+            Birthday: "1962-08-28T00:00:00.000Z",
+            moviesDirected: [
+                "Alien 3",
+                "Seven",
+                "The Game",
+                "Fight Club",
+                "Panic Room",
+                "Zodiac"
+            ]
+        },
+        _id: "64ad5724477cd1343bf3170c",
+        Title: "Gone Girl",
+        Description: "With his wife's disappearance having become the focus of an intense media circus, a man sees the spotlight turned on him when it's suspected that he may not be innocent.",
+        ImagePath: "gonegirl.png",
+        Featured: false,
+        Actors: [
+            "Ben Affleck",
+            "Rosamund Pike",
+            "Neil Patrick Harris"
+        ],
+        ReleaseYear: "2014",
+        Rating: "8.1"
+    },
+    {
+        Genre: {
+            Name: "Action",
+            Description: "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats. The genre tends to feature a mostly resourceful hero struggling against incredible odds, which include life-threatening situations, a dangerous villain, or a pursuit which usually concludes in victory for the hero."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "Duncan Jones",
+            Bio: "Duncan Jones was born on May 30, 1971 in Bromley, Kent, England, UK. He is a director and writer, known for Moon (2009), Source Code (2011) and Mute (2018). He has been married to Rodene Ronquillo since November 6, 2012. They have two children.",
+            Birthday: "1971-05-30T00:00:00.000Z",
+            moviesDirected: [
+                "Whistle",
+                "Moon",
+                "Source Code",
+                "Warcraft",
+                "Mute"
+            ]
+        },
+        _id: "64ad5724477cd1343bf3170b",
+        Title: "Warcraft",
+        Description: "As an Orc horde invades the planet Azeroth using a magic portal, a few human heroes and dissenting Orcs must attempt to stop the true evil behind this war.",
+        ImagePath: "warcraft.png",
+        Featured: false,
+        Actors: [
+            "Travis Fimmel",
+            "Paula Patton",
+            "Ben Foster"
+        ],
+        ReleaseYear: "2016",
+        Rating: "6.7"
+    },
+    {
+        Genre: {
+            Name: "Action",
+            Description: "Action film is a film genre in which the protagonist is thrust into a series of events that typically involve violence and physical feats. The genre tends to feature a mostly resourceful hero struggling against incredible odds, which include life-threatening situations, a dangerous villain, or a pursuit which usually concludes in victory for the hero."
+        },
+        Director: {
+            MoviesDirected: []
+        },
+        _id: "64ad5724477cd1343bf31709",
+        Title: "Inception",
+        Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+        Diretor: {
+            Name: "Christopher Nolan",
+            Bio: "Best known for his cerebral, often nonlinear, storytelling, acclaimed writer-director Christopher Nolan was born on July 30, 1970, in London, England. Over the course of 15 years of filmmaking, Nolan has gone from low-budget independent films to working on some of the biggest blockbusters ever made.",
+            Birthday: "1970-07-30T00:00:00.000Z",
+            moviesDirected: [
+                "The Prestige",
+                "The Dark Knight",
+                "Inception",
+                "The Dark Knight Rises",
+                "Interstellar",
+                "Dunkirk",
+                "Tenet",
+                "Oppenheimer"
+            ]
+        },
+        ImagePath: "inception.png",
+        Featured: true,
+        Actors: [
+            "Leonardo DiCaprio",
+            "Joseph Gordon-Levitt",
+            "Elliot Page",
+            "Tom Hardy"
+        ],
+        ReleaseYear: "2010",
+        Rating: "8.8"
+    },
+    {
+        Genre: {
+            Name: "Mystery",
+            Description: "A mystery film is a genre of film that revolves around the solution of a problem or a crime. It focuses on the efforts of the detective, private investigator or amateur sleuth to solve the mysterious circumstances of an issue by means of clues, investigation, and clever deduction. By 2022, mystery films are generally referred to as detective fiction."
+        },
+        Director: {
+            MoviesDirected: [],
+            Name: "Duncan Jones",
+            Bio: "Duncan Jones was born on May 30, 1971 in Bromley, Kent, England, UK. He is a director and writer, known for Moon (2009), Source Code (2011) and Mute (2018). He has been married to Rodene Ronquillo since November 6, 2012. They have two children.",
+            Birthday: "1971-05-30T00:00:00.000Z",
+            moviesDirected: [
+                "Whistle",
+                "Moon",
+                "Source Code",
+                "Warcraft",
+                "Mute"
+            ]
+        },
+        _id: "64ad5724477cd1343bf31708",
+        Title: "Source Code",
+        Description: "A soldier wakes up in someone else's body and discovers he's part of an experimental government program to find the bomber of a  commuter train within 8 minutes.",
+        ImagePath: "sourcecode.png",
+        Featured: false,
+        Actors: [
+            "Jake Gyllenhaal",
+            "Michelle Monaghan",
+            "Vera Farmiga",
+            "Jeffrey Wright"
+        ],
+        ReleaseYear: "2011",
+        Rating: "7.5"
+    }
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"5v5wC":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5daf = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5daf.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _uuid = require("uuid");
+const MovieView = ({ movie, handleBackClick })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    style: {
+                        width: "100px"
+                    },
+                    src: movie.ImagePath,
+                    alt: movie.Title
+                }, void 0, false, {
+                    fileName: "src/components/movieView.jsx",
+                    lineNumber: 8,
+                    columnNumber: 9
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/movieView.jsx",
+                lineNumber: 7,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Title:"
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 15,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.Title
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 16,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movieView.jsx",
+                lineNumber: 14,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Director: "
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 19,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.Director.Name
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 20,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movieView.jsx",
+                lineNumber: 18,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Genre: "
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 23,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.Genre.Name
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 24,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movieView.jsx",
+                lineNumber: 22,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Actors: "
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 27,
+                        columnNumber: 9
+                    }, undefined),
+                    movie.Actors.map((actor, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            children: [
+                                actor,
+                                i !== movie.Actors.length - 1 && ", "
+                            ]
+                        }, (0, _uuid.v4)(), true, {
+                            fileName: "src/components/movieView.jsx",
+                            lineNumber: 29,
+                            columnNumber: 11
+                        }, undefined))
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movieView.jsx",
+                lineNumber: 26,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: "Description: "
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 36,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                        children: movie.Description
+                    }, void 0, false, {
+                        fileName: "src/components/movieView.jsx",
+                        lineNumber: 37,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movieView.jsx",
+                lineNumber: 35,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: handleBackClick,
+                children: "Back"
+            }, void 0, false, {
+                fileName: "src/components/movieView.jsx",
+                lineNumber: 39,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/movieView.jsx",
+        lineNumber: 6,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieView;
+var _c;
+$RefreshReg$(_c, "MovieView");
+
+  $parcel$ReactRefreshHelpers$5daf.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"jyDkD","uuid":"j4KJi"}],"j4KJi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "v1", ()=>(0, _v1JsDefault.default));
+parcelHelpers.export(exports, "v3", ()=>(0, _v3JsDefault.default));
+parcelHelpers.export(exports, "v4", ()=>(0, _v4JsDefault.default));
+parcelHelpers.export(exports, "v5", ()=>(0, _v5JsDefault.default));
+parcelHelpers.export(exports, "NIL", ()=>(0, _nilJsDefault.default));
+parcelHelpers.export(exports, "version", ()=>(0, _versionJsDefault.default));
+parcelHelpers.export(exports, "validate", ()=>(0, _validateJsDefault.default));
+parcelHelpers.export(exports, "stringify", ()=>(0, _stringifyJsDefault.default));
+parcelHelpers.export(exports, "parse", ()=>(0, _parseJsDefault.default));
+var _v1Js = require("./v1.js");
+var _v1JsDefault = parcelHelpers.interopDefault(_v1Js);
+var _v3Js = require("./v3.js");
+var _v3JsDefault = parcelHelpers.interopDefault(_v3Js);
+var _v4Js = require("./v4.js");
+var _v4JsDefault = parcelHelpers.interopDefault(_v4Js);
+var _v5Js = require("./v5.js");
+var _v5JsDefault = parcelHelpers.interopDefault(_v5Js);
+var _nilJs = require("./nil.js");
+var _nilJsDefault = parcelHelpers.interopDefault(_nilJs);
+var _versionJs = require("./version.js");
+var _versionJsDefault = parcelHelpers.interopDefault(_versionJs);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+var _stringifyJs = require("./stringify.js");
+var _stringifyJsDefault = parcelHelpers.interopDefault(_stringifyJs);
+var _parseJs = require("./parse.js");
+var _parseJsDefault = parcelHelpers.interopDefault(_parseJs);
+
+},{"./v1.js":"9qfh9","./v3.js":"3RlI2","./v4.js":"8zJtu","./v5.js":"i3cfs","./nil.js":"kcLFq","./version.js":"gvRcF","./validate.js":"eHPgI","./stringify.js":"5Y9F1","./parse.js":"6aVVs","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"9qfh9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _rngJs = require("./rng.js");
+var _rngJsDefault = parcelHelpers.interopDefault(_rngJs);
+var _stringifyJs = require("./stringify.js"); // **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+let _nodeId;
+let _clockseq; // Previous uuid creation time
+let _lastMSecs = 0;
+let _lastNSecs = 0; // See https://github.com/uuidjs/uuid for API details
+function v1(options, buf, offset) {
+    let i = buf && offset || 0;
+    const b = buf || new Array(16);
+    options = options || {};
+    let node = options.node || _nodeId;
+    let clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq; // node and clockseq need to be initialized to random values if they're not
+    // specified.  We do this lazily to minimize issues related to insufficient
+    // system entropy.  See #189
+    if (node == null || clockseq == null) {
+        const seedBytes = options.random || (options.rng || (0, _rngJsDefault.default))();
+        if (node == null) // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+        node = _nodeId = [
+            seedBytes[0] | 0x01,
+            seedBytes[1],
+            seedBytes[2],
+            seedBytes[3],
+            seedBytes[4],
+            seedBytes[5]
+        ];
+        if (clockseq == null) // Per 4.2.2, randomize (14 bit) clockseq
+        clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    } // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+    // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+    // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+    // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+    let msecs = options.msecs !== undefined ? options.msecs : Date.now(); // Per 4.2.1.2, use count of uuid's generated during the current clock
+    // cycle to simulate higher resolution clock
+    let nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1; // Time since last uuid creation (in msecs)
+    const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000; // Per 4.2.1.2, Bump clockseq on clock regression
+    if (dt < 0 && options.clockseq === undefined) clockseq = clockseq + 1 & 0x3fff;
+     // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+    // time interval
+    if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) nsecs = 0;
+     // Per 4.2.1.2 Throw error if too many uuids are requested
+    if (nsecs >= 10000) throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+    _lastMSecs = msecs;
+    _lastNSecs = nsecs;
+    _clockseq = clockseq; // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+    msecs += 12219292800000; // `time_low`
+    const tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+    b[i++] = tl >>> 24 & 0xff;
+    b[i++] = tl >>> 16 & 0xff;
+    b[i++] = tl >>> 8 & 0xff;
+    b[i++] = tl & 0xff; // `time_mid`
+    const tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
+    b[i++] = tmh >>> 8 & 0xff;
+    b[i++] = tmh & 0xff; // `time_high_and_version`
+    b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+    b[i++] = tmh >>> 16 & 0xff; // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+    b[i++] = clockseq >>> 8 | 0x80; // `clock_seq_low`
+    b[i++] = clockseq & 0xff; // `node`
+    for(let n = 0; n < 6; ++n)b[i + n] = node[n];
+    return buf || (0, _stringifyJs.unsafeStringify)(b);
+}
+exports.default = v1;
+
+},{"./rng.js":"2psyE","./stringify.js":"5Y9F1","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"2psyE":[function(require,module,exports) {
+// Unique ID creation requires a high quality random # generator. In the browser we therefore
+// require the crypto API and do not support built-in fallback to lower quality random number
+// generators (like Math.random()).
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>rng);
+let getRandomValues;
+const rnds8 = new Uint8Array(16);
+function rng() {
+    // lazy load so that environments that need to polyfill have a chance to do so
+    if (!getRandomValues) {
+        // getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+        getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
+        if (!getRandomValues) throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
+    }
+    return getRandomValues(rnds8);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"5Y9F1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "unsafeStringify", ()=>unsafeStringify);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */ const byteToHex = [];
+for(let i = 0; i < 256; ++i)byteToHex.push((i + 0x100).toString(16).slice(1));
+function unsafeStringify(arr, offset = 0) {
+    // Note: Be careful editing this code!  It's been tuned for performance
+    // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+    return (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
+}
+function stringify(arr, offset = 0) {
+    const uuid = unsafeStringify(arr, offset); // Consistency check for valid UUID.  If this throws, it's likely due to one
+    // of the following:
+    // - One or more input array values don't map to a hex octet (leading to
+    // "undefined" in the uuid)
+    // - Invalid input values for the RFC `version` or `variant` fields
+    if (!(0, _validateJsDefault.default)(uuid)) throw TypeError("Stringified UUID is invalid");
+    return uuid;
+}
+exports.default = stringify;
+
+},{"./validate.js":"eHPgI","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"eHPgI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _regexJs = require("./regex.js");
+var _regexJsDefault = parcelHelpers.interopDefault(_regexJs);
+function validate(uuid) {
+    return typeof uuid === "string" && (0, _regexJsDefault.default).test(uuid);
+}
+exports.default = validate;
+
+},{"./regex.js":"bUa5g","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"bUa5g":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"3RlI2":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _v35Js = require("./v35.js");
+var _v35JsDefault = parcelHelpers.interopDefault(_v35Js);
+var _md5Js = require("./md5.js");
+var _md5JsDefault = parcelHelpers.interopDefault(_md5Js);
+const v3 = (0, _v35JsDefault.default)("v3", 0x30, (0, _md5JsDefault.default));
+exports.default = v3;
+
+},{"./v35.js":"f7cVj","./md5.js":"k0SFu","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"f7cVj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DNS", ()=>DNS);
+parcelHelpers.export(exports, "URL", ()=>URL);
+parcelHelpers.export(exports, "default", ()=>v35);
+var _stringifyJs = require("./stringify.js");
+var _parseJs = require("./parse.js");
+var _parseJsDefault = parcelHelpers.interopDefault(_parseJs);
+function stringToBytes(str) {
+    str = unescape(encodeURIComponent(str)); // UTF8 escape
+    const bytes = [];
+    for(let i = 0; i < str.length; ++i)bytes.push(str.charCodeAt(i));
+    return bytes;
+}
+const DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
+const URL = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
+function v35(name, version, hashfunc) {
+    function generateUUID(value, namespace, buf, offset) {
+        var _namespace;
+        if (typeof value === "string") value = stringToBytes(value);
+        if (typeof namespace === "string") namespace = (0, _parseJsDefault.default)(namespace);
+        if (((_namespace = namespace) === null || _namespace === void 0 ? void 0 : _namespace.length) !== 16) throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");
+         // Compute hash of namespace and value, Per 4.3
+        // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
+        // hashfunc([...namespace, ... value])`
+        let bytes = new Uint8Array(16 + value.length);
+        bytes.set(namespace);
+        bytes.set(value, namespace.length);
+        bytes = hashfunc(bytes);
+        bytes[6] = bytes[6] & 0x0f | version;
+        bytes[8] = bytes[8] & 0x3f | 0x80;
+        if (buf) {
+            offset = offset || 0;
+            for(let i = 0; i < 16; ++i)buf[offset + i] = bytes[i];
+            return buf;
+        }
+        return (0, _stringifyJs.unsafeStringify)(bytes);
+    } // Function#name is not settable on some platforms (#270)
+    try {
+        generateUUID.name = name; // eslint-disable-next-line no-empty
+    } catch (err) {} // For CommonJS default export support
+    generateUUID.DNS = DNS;
+    generateUUID.URL = URL;
+    return generateUUID;
+}
+
+},{"./stringify.js":"5Y9F1","./parse.js":"6aVVs","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"6aVVs":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+function parse(uuid) {
+    if (!(0, _validateJsDefault.default)(uuid)) throw TypeError("Invalid UUID");
+    let v;
+    const arr = new Uint8Array(16); // Parse ########-....-....-....-............
+    arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
+    arr[1] = v >>> 16 & 0xff;
+    arr[2] = v >>> 8 & 0xff;
+    arr[3] = v & 0xff; // Parse ........-####-....-....-............
+    arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
+    arr[5] = v & 0xff; // Parse ........-....-####-....-............
+    arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
+    arr[7] = v & 0xff; // Parse ........-....-....-####-............
+    arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
+    arr[9] = v & 0xff; // Parse ........-....-....-....-############
+    // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
+    arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
+    arr[11] = v / 0x100000000 & 0xff;
+    arr[12] = v >>> 24 & 0xff;
+    arr[13] = v >>> 16 & 0xff;
+    arr[14] = v >>> 8 & 0xff;
+    arr[15] = v & 0xff;
+    return arr;
+}
+exports.default = parse;
+
+},{"./validate.js":"eHPgI","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"k0SFu":[function(require,module,exports) {
+/*
+ * Browser-compatible JavaScript MD5
+ *
+ * Modification of JavaScript MD5
+ * https://github.com/blueimp/JavaScript-MD5
+ *
+ * Copyright 2011, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * https://opensource.org/licenses/MIT
+ *
+ * Based on
+ * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
+ * Digest Algorithm, as defined in RFC 1321.
+ * Version 2.2 Copyright (C) Paul Johnston 1999 - 2009
+ * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
+ * Distributed under the BSD License
+ * See http://pajhome.org.uk/crypt/md5 for more info.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function md5(bytes) {
+    if (typeof bytes === "string") {
+        const msg = unescape(encodeURIComponent(bytes)); // UTF8 escape
+        bytes = new Uint8Array(msg.length);
+        for(let i = 0; i < msg.length; ++i)bytes[i] = msg.charCodeAt(i);
+    }
+    return md5ToHexEncodedArray(wordsToMd5(bytesToWords(bytes), bytes.length * 8));
+}
+/*
+ * Convert an array of little-endian words to an array of bytes
+ */ function md5ToHexEncodedArray(input) {
+    const output = [];
+    const length32 = input.length * 32;
+    const hexTab = "0123456789abcdef";
+    for(let i = 0; i < length32; i += 8){
+        const x = input[i >> 5] >>> i % 32 & 0xff;
+        const hex = parseInt(hexTab.charAt(x >>> 4 & 0x0f) + hexTab.charAt(x & 0x0f), 16);
+        output.push(hex);
+    }
+    return output;
+}
+/**
+ * Calculate output length with padding and bit length
+ */ function getOutputLength(inputLength8) {
+    return (inputLength8 + 64 >>> 9 << 4) + 14 + 1;
+}
+/*
+ * Calculate the MD5 of an array of little-endian words, and a bit length.
+ */ function wordsToMd5(x, len) {
+    /* append padding */ x[len >> 5] |= 0x80 << len % 32;
+    x[getOutputLength(len) - 1] = len;
+    let a = 1732584193;
+    let b = -271733879;
+    let c = -1732584194;
+    let d = 271733878;
+    for(let i = 0; i < x.length; i += 16){
+        const olda = a;
+        const oldb = b;
+        const oldc = c;
+        const oldd = d;
+        a = md5ff(a, b, c, d, x[i], 7, -680876936);
+        d = md5ff(d, a, b, c, x[i + 1], 12, -389564586);
+        c = md5ff(c, d, a, b, x[i + 2], 17, 606105819);
+        b = md5ff(b, c, d, a, x[i + 3], 22, -1044525330);
+        a = md5ff(a, b, c, d, x[i + 4], 7, -176418897);
+        d = md5ff(d, a, b, c, x[i + 5], 12, 1200080426);
+        c = md5ff(c, d, a, b, x[i + 6], 17, -1473231341);
+        b = md5ff(b, c, d, a, x[i + 7], 22, -45705983);
+        a = md5ff(a, b, c, d, x[i + 8], 7, 1770035416);
+        d = md5ff(d, a, b, c, x[i + 9], 12, -1958414417);
+        c = md5ff(c, d, a, b, x[i + 10], 17, -42063);
+        b = md5ff(b, c, d, a, x[i + 11], 22, -1990404162);
+        a = md5ff(a, b, c, d, x[i + 12], 7, 1804603682);
+        d = md5ff(d, a, b, c, x[i + 13], 12, -40341101);
+        c = md5ff(c, d, a, b, x[i + 14], 17, -1502002290);
+        b = md5ff(b, c, d, a, x[i + 15], 22, 1236535329);
+        a = md5gg(a, b, c, d, x[i + 1], 5, -165796510);
+        d = md5gg(d, a, b, c, x[i + 6], 9, -1069501632);
+        c = md5gg(c, d, a, b, x[i + 11], 14, 643717713);
+        b = md5gg(b, c, d, a, x[i], 20, -373897302);
+        a = md5gg(a, b, c, d, x[i + 5], 5, -701558691);
+        d = md5gg(d, a, b, c, x[i + 10], 9, 38016083);
+        c = md5gg(c, d, a, b, x[i + 15], 14, -660478335);
+        b = md5gg(b, c, d, a, x[i + 4], 20, -405537848);
+        a = md5gg(a, b, c, d, x[i + 9], 5, 568446438);
+        d = md5gg(d, a, b, c, x[i + 14], 9, -1019803690);
+        c = md5gg(c, d, a, b, x[i + 3], 14, -187363961);
+        b = md5gg(b, c, d, a, x[i + 8], 20, 1163531501);
+        a = md5gg(a, b, c, d, x[i + 13], 5, -1444681467);
+        d = md5gg(d, a, b, c, x[i + 2], 9, -51403784);
+        c = md5gg(c, d, a, b, x[i + 7], 14, 1735328473);
+        b = md5gg(b, c, d, a, x[i + 12], 20, -1926607734);
+        a = md5hh(a, b, c, d, x[i + 5], 4, -378558);
+        d = md5hh(d, a, b, c, x[i + 8], 11, -2022574463);
+        c = md5hh(c, d, a, b, x[i + 11], 16, 1839030562);
+        b = md5hh(b, c, d, a, x[i + 14], 23, -35309556);
+        a = md5hh(a, b, c, d, x[i + 1], 4, -1530992060);
+        d = md5hh(d, a, b, c, x[i + 4], 11, 1272893353);
+        c = md5hh(c, d, a, b, x[i + 7], 16, -155497632);
+        b = md5hh(b, c, d, a, x[i + 10], 23, -1094730640);
+        a = md5hh(a, b, c, d, x[i + 13], 4, 681279174);
+        d = md5hh(d, a, b, c, x[i], 11, -358537222);
+        c = md5hh(c, d, a, b, x[i + 3], 16, -722521979);
+        b = md5hh(b, c, d, a, x[i + 6], 23, 76029189);
+        a = md5hh(a, b, c, d, x[i + 9], 4, -640364487);
+        d = md5hh(d, a, b, c, x[i + 12], 11, -421815835);
+        c = md5hh(c, d, a, b, x[i + 15], 16, 530742520);
+        b = md5hh(b, c, d, a, x[i + 2], 23, -995338651);
+        a = md5ii(a, b, c, d, x[i], 6, -198630844);
+        d = md5ii(d, a, b, c, x[i + 7], 10, 1126891415);
+        c = md5ii(c, d, a, b, x[i + 14], 15, -1416354905);
+        b = md5ii(b, c, d, a, x[i + 5], 21, -57434055);
+        a = md5ii(a, b, c, d, x[i + 12], 6, 1700485571);
+        d = md5ii(d, a, b, c, x[i + 3], 10, -1894986606);
+        c = md5ii(c, d, a, b, x[i + 10], 15, -1051523);
+        b = md5ii(b, c, d, a, x[i + 1], 21, -2054922799);
+        a = md5ii(a, b, c, d, x[i + 8], 6, 1873313359);
+        d = md5ii(d, a, b, c, x[i + 15], 10, -30611744);
+        c = md5ii(c, d, a, b, x[i + 6], 15, -1560198380);
+        b = md5ii(b, c, d, a, x[i + 13], 21, 1309151649);
+        a = md5ii(a, b, c, d, x[i + 4], 6, -145523070);
+        d = md5ii(d, a, b, c, x[i + 11], 10, -1120210379);
+        c = md5ii(c, d, a, b, x[i + 2], 15, 718787259);
+        b = md5ii(b, c, d, a, x[i + 9], 21, -343485551);
+        a = safeAdd(a, olda);
+        b = safeAdd(b, oldb);
+        c = safeAdd(c, oldc);
+        d = safeAdd(d, oldd);
+    }
+    return [
+        a,
+        b,
+        c,
+        d
+    ];
+}
+/*
+ * Convert an array bytes to an array of little-endian words
+ * Characters >255 have their high-byte silently ignored.
+ */ function bytesToWords(input) {
+    if (input.length === 0) return [];
+    const length8 = input.length * 8;
+    const output = new Uint32Array(getOutputLength(length8));
+    for(let i = 0; i < length8; i += 8)output[i >> 5] |= (input[i / 8] & 0xff) << i % 32;
+    return output;
+}
+/*
+ * Add integers, wrapping at 2^32. This uses 16-bit operations internally
+ * to work around bugs in some JS interpreters.
+ */ function safeAdd(x, y) {
+    const lsw = (x & 0xffff) + (y & 0xffff);
+    const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+    return msw << 16 | lsw & 0xffff;
+}
+/*
+ * Bitwise rotate a 32-bit number to the left.
+ */ function bitRotateLeft(num, cnt) {
+    return num << cnt | num >>> 32 - cnt;
+}
+/*
+ * These functions implement the four basic operations the algorithm uses.
+ */ function md5cmn(q, a, b, x, s, t) {
+    return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
+}
+function md5ff(a, b, c, d, x, s, t) {
+    return md5cmn(b & c | ~b & d, a, b, x, s, t);
+}
+function md5gg(a, b, c, d, x, s, t) {
+    return md5cmn(b & d | c & ~d, a, b, x, s, t);
+}
+function md5hh(a, b, c, d, x, s, t) {
+    return md5cmn(b ^ c ^ d, a, b, x, s, t);
+}
+function md5ii(a, b, c, d, x, s, t) {
+    return md5cmn(c ^ (b | ~d), a, b, x, s, t);
+}
+exports.default = md5;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"8zJtu":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _nativeJs = require("./native.js");
+var _nativeJsDefault = parcelHelpers.interopDefault(_nativeJs);
+var _rngJs = require("./rng.js");
+var _rngJsDefault = parcelHelpers.interopDefault(_rngJs);
+var _stringifyJs = require("./stringify.js");
+function v4(options, buf, offset) {
+    if ((0, _nativeJsDefault.default).randomUUID && !buf && !options) return (0, _nativeJsDefault.default).randomUUID();
+    options = options || {};
+    const rnds = options.random || (options.rng || (0, _rngJsDefault.default))(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+    rnds[6] = rnds[6] & 0x0f | 0x40;
+    rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+    if (buf) {
+        offset = offset || 0;
+        for(let i = 0; i < 16; ++i)buf[offset + i] = rnds[i];
+        return buf;
+    }
+    return (0, _stringifyJs.unsafeStringify)(rnds);
+}
+exports.default = v4;
+
+},{"./native.js":"lYayS","./rng.js":"2psyE","./stringify.js":"5Y9F1","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"lYayS":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const randomUUID = typeof crypto !== "undefined" && crypto.randomUUID && crypto.randomUUID.bind(crypto);
+exports.default = {
+    randomUUID
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"i3cfs":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _v35Js = require("./v35.js");
+var _v35JsDefault = parcelHelpers.interopDefault(_v35Js);
+var _sha1Js = require("./sha1.js");
+var _sha1JsDefault = parcelHelpers.interopDefault(_sha1Js);
+const v5 = (0, _v35JsDefault.default)("v5", 0x50, (0, _sha1JsDefault.default));
+exports.default = v5;
+
+},{"./v35.js":"f7cVj","./sha1.js":"BVVut","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"BVVut":[function(require,module,exports) {
+// Adapted from Chris Veness' SHA1 code at
+// http://www.movable-type.co.uk/scripts/sha1.html
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function f(s, x, y, z) {
+    switch(s){
+        case 0:
+            return x & y ^ ~x & z;
+        case 1:
+            return x ^ y ^ z;
+        case 2:
+            return x & y ^ x & z ^ y & z;
+        case 3:
+            return x ^ y ^ z;
+    }
+}
+function ROTL(x, n) {
+    return x << n | x >>> 32 - n;
+}
+function sha1(bytes) {
+    const K = [
+        0x5a827999,
+        0x6ed9eba1,
+        0x8f1bbcdc,
+        0xca62c1d6
+    ];
+    const H = [
+        0x67452301,
+        0xefcdab89,
+        0x98badcfe,
+        0x10325476,
+        0xc3d2e1f0
+    ];
+    if (typeof bytes === "string") {
+        const msg = unescape(encodeURIComponent(bytes)); // UTF8 escape
+        bytes = [];
+        for(let i = 0; i < msg.length; ++i)bytes.push(msg.charCodeAt(i));
+    } else if (!Array.isArray(bytes)) // Convert Array-like to Array
+    bytes = Array.prototype.slice.call(bytes);
+    bytes.push(0x80);
+    const l = bytes.length / 4 + 2;
+    const N = Math.ceil(l / 16);
+    const M = new Array(N);
+    for(let i = 0; i < N; ++i){
+        const arr = new Uint32Array(16);
+        for(let j = 0; j < 16; ++j)arr[j] = bytes[i * 64 + j * 4] << 24 | bytes[i * 64 + j * 4 + 1] << 16 | bytes[i * 64 + j * 4 + 2] << 8 | bytes[i * 64 + j * 4 + 3];
+        M[i] = arr;
+    }
+    M[N - 1][14] = (bytes.length - 1) * 8 / Math.pow(2, 32);
+    M[N - 1][14] = Math.floor(M[N - 1][14]);
+    M[N - 1][15] = (bytes.length - 1) * 8 & 0xffffffff;
+    for(let i = 0; i < N; ++i){
+        const W = new Uint32Array(80);
+        for(let t = 0; t < 16; ++t)W[t] = M[i][t];
+        for(let t = 16; t < 80; ++t)W[t] = ROTL(W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16], 1);
+        let a = H[0];
+        let b = H[1];
+        let c = H[2];
+        let d = H[3];
+        let e = H[4];
+        for(let t = 0; t < 80; ++t){
+            const s = Math.floor(t / 20);
+            const T = ROTL(a, 5) + f(s, b, c, d) + e + K[s] + W[t] >>> 0;
+            e = d;
+            d = c;
+            c = ROTL(b, 30) >>> 0;
+            b = a;
+            a = T;
+        }
+        H[0] = H[0] + a >>> 0;
+        H[1] = H[1] + b >>> 0;
+        H[2] = H[2] + c >>> 0;
+        H[3] = H[3] + d >>> 0;
+        H[4] = H[4] + e >>> 0;
+    }
+    return [
+        H[0] >> 24 & 0xff,
+        H[0] >> 16 & 0xff,
+        H[0] >> 8 & 0xff,
+        H[0] & 0xff,
+        H[1] >> 24 & 0xff,
+        H[1] >> 16 & 0xff,
+        H[1] >> 8 & 0xff,
+        H[1] & 0xff,
+        H[2] >> 24 & 0xff,
+        H[2] >> 16 & 0xff,
+        H[2] >> 8 & 0xff,
+        H[2] & 0xff,
+        H[3] >> 24 & 0xff,
+        H[3] >> 16 & 0xff,
+        H[3] >> 8 & 0xff,
+        H[3] & 0xff,
+        H[4] >> 24 & 0xff,
+        H[4] >> 16 & 0xff,
+        H[4] >> 8 & 0xff,
+        H[4] & 0xff
+    ];
+}
+exports.default = sha1;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"kcLFq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = "00000000-0000-0000-0000-000000000000";
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}],"gvRcF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _validateJs = require("./validate.js");
+var _validateJsDefault = parcelHelpers.interopDefault(_validateJs);
+function version(uuid) {
+    if (!(0, _validateJsDefault.default)(uuid)) throw TypeError("Invalid UUID");
+    return parseInt(uuid.slice(14, 15), 16);
+}
+exports.default = version;
+
+},{"./validate.js":"eHPgI","@parcel/transformer-js/src/esmodule-helpers.js":"hBaJv"}]},["lEMiX","iEx1f","d8Dch"], "d8Dch", "parcelRequire9b2c")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

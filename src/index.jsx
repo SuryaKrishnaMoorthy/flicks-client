@@ -1,10 +1,11 @@
 import { createRoot } from "react-dom/client";
+import { MainView } from "./components/mainView";
 import "./index.scss";
 
 const FlicksApp = () => {
   return (
     <div className="flicks">
-      <div>Good Morning</div>
+      <MainView />
     </div>
   );
 };
