@@ -27328,27 +27328,29 @@ const MainView = ()=>{
     }, void 0, false, {
         fileName: "src/components/mainView.jsx",
         lineNumber: 18,
-        columnNumber: 12
+        columnNumber: 7
     }, undefined);
     if (!moviesList.length) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h6", {
         children: "No movies found!"
     }, void 0, false, {
         fileName: "src/components/mainView.jsx",
-        lineNumber: 22,
+        lineNumber: 23,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: moviesList.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+        children: moviesList.map((movie)=>{
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 onMovieClick: handleClick,
                 movie: movie
             }, movie._id, false, {
                 fileName: "src/components/mainView.jsx",
-                lineNumber: 27,
-                columnNumber: 35
-            }, undefined))
+                lineNumber: 30,
+                columnNumber: 11
+            }, undefined);
+        })
     }, void 0, false, {
         fileName: "src/components/mainView.jsx",
-        lineNumber: 26,
+        lineNumber: 27,
         columnNumber: 5
     }, undefined);
 };
