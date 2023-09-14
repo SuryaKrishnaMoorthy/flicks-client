@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import PropTypes from "prop-types";
 
 export const MovieView = ({ movie, handleBackClick }) => {
   return (
@@ -38,4 +39,19 @@ export const MovieView = ({ movie, handleBackClick }) => {
       <button onClick={handleBackClick}>Back</button>
     </div>
   );
+};
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string,
+    ImagePath: PropTypes.string,
+    Director: PropTypes.shape({
+      Name: PropTypes.string,
+    }),
+    Actors: PropTypes.array,
+    Genre: PropTypes.shape({ Name: PropTypes.string }),
+  }).isRequired,
+  handleBackClick: PropTypes.func.isRequired,
 };
