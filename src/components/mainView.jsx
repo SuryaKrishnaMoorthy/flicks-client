@@ -5,22 +5,19 @@ import { MovieView } from "./movieView";
 import { LoginView } from "./loginView";
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
   const [moviesList, setMoviesList] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const [token, setToken] = useState(storedToken ? storedToken : null);
 
   useEffect(() => {
     if (!token) return;
-    const getBooks = fetch(
-      "https://flicks-api-24f25506e519.herokuapp.com/movies",
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
+    fetch("https://flicks-api-24f25506e519.herokuapp.com/movies")
       .then((res) => res.json())
       .then((data) => {
-        const books = data.map(
+        const movies = data.map(
           ({
             _id,
             Title,
@@ -39,8 +36,8 @@ export const MainView = () => {
             Genre,
           })
         );
-        console.log(books);
-        setMoviesList(books);
+        console.log(movies);
+        setMoviesList(movies);
       });
   }, [token]);
 

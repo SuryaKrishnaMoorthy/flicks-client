@@ -27317,18 +27317,16 @@ var _loginView = require("./loginView");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
     const [moviesList, setMoviesList] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
-    const [user, setUser] = (0, _react.useState)(null);
-    const [token, setToken] = (0, _react.useState)(null);
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
+    const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
     (0, _react.useEffect)(()=>{
         if (!token) return;
-        const getBooks = fetch("https://flicks-api-24f25506e519.herokuapp.com/movies", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((res)=>res.json()).then((data)=>{
-            const books = data.map(({ _id, Title, Description, ImagePath, Director, Actors, Genre })=>({
+        fetch("https://flicks-api-24f25506e519.herokuapp.com/movies").then((res)=>res.json()).then((data)=>{
+            const movies = data.map(({ _id, Title, Description, ImagePath, Director, Actors, Genre })=>({
                     id: _id,
                     Title,
                     Description,
@@ -27337,8 +27335,8 @@ const MainView = ()=>{
                     Actors,
                     Genre
                 }));
-            console.log(books);
-            setMoviesList(books);
+            console.log(movies);
+            setMoviesList(movies);
         });
     }, [
         token
@@ -27354,7 +27352,7 @@ const MainView = ()=>{
         }
     }, void 0, false, {
         fileName: "src/components/mainView.jsx",
-        lineNumber: 55,
+        lineNumber: 52,
         columnNumber: 7
     }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
@@ -27362,14 +27360,14 @@ const MainView = ()=>{
         handleBackClick: handleBackClick
     }, void 0, false, {
         fileName: "src/components/mainView.jsx",
-        lineNumber: 66,
+        lineNumber: 63,
         columnNumber: 7
     }, undefined);
     if (!moviesList.length) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
         children: "No movies found!"
     }, void 0, false, {
         fileName: "src/components/mainView.jsx",
-        lineNumber: 71,
+        lineNumber: 68,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -27382,7 +27380,7 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/mainView.jsx",
-                lineNumber: 76,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27392,19 +27390,19 @@ const MainView = ()=>{
                         movie: movie
                     }, movie.id, false, {
                         fileName: "src/components/mainView.jsx",
-                        lineNumber: 87,
+                        lineNumber: 84,
                         columnNumber: 13
                     }, undefined);
                 })
             }, void 0, false, {
                 fileName: "src/components/mainView.jsx",
-                lineNumber: 84,
+                lineNumber: 81,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true);
 };
-_s(MainView, "wK211otQ+JM5YXGpXel0S6HW1xE=");
+_s(MainView, "4DHljCBX8y8fdiF84VS/djk3ryA=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27462,7 +27460,7 @@ MovieCard.propTypes = {
         Description: (0, _propTypesDefault.default).string.isRequired,
         ImagePath: (0, _propTypesDefault.default).string.isRequired,
         Director: (0, _propTypesDefault.default).shape({
-            Name: (0, _propTypesDefault.default).string.isRequired
+            Name: (0, _propTypesDefault.default).string
         }),
         Actors: (0, _propTypesDefault.default).array.isRequired,
         Genre: (0, _propTypesDefault.default).shape({
@@ -29378,7 +29376,7 @@ var _s = $RefreshSig$();
 const LoginView = ({ onLoggedIn })=>{
     _s();
     const [userName, setUserName] = (0, _react.useState)("");
-    const [password, setPassword] = (0, _react.useState)(null);
+    const [password, setPassword] = (0, _react.useState)("");
     const handleSubmit = (e)=>{
         e.preventDefault();
         const data = {
@@ -29393,8 +29391,11 @@ const LoginView = ({ onLoggedIn })=>{
             body: JSON.stringify(data)
         }).then((res)=>res.json()).then((data)=>{
             console.log("Login Response: ", data);
-            if (data.user) onLoggedIn(data.user, data.token);
-            else alert("No such User!");
+            if (data.user) {
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token);
+                onLoggedIn(data.user, data.token);
+            } else alert("No such User!");
         }).catch((err)=>{
             console.log("Error: ", err.message);
         });
@@ -29419,13 +29420,13 @@ const LoginView = ({ onLoggedIn })=>{
                         minLength: 3
                     }, void 0, false, {
                         fileName: "src/components/loginView.jsx",
-                        lineNumber: 49,
+                        lineNumber: 51,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/loginView.jsx",
-                lineNumber: 47,
+                lineNumber: 49,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -29439,13 +29440,13 @@ const LoginView = ({ onLoggedIn })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/loginView.jsx",
-                        lineNumber: 60,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/loginView.jsx",
-                lineNumber: 58,
+                lineNumber: 60,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -29457,17 +29458,17 @@ const LoginView = ({ onLoggedIn })=>{
                 children: "Login"
             }, void 0, false, {
                 fileName: "src/components/loginView.jsx",
-                lineNumber: 67,
+                lineNumber: 69,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/loginView.jsx",
-        lineNumber: 42,
+        lineNumber: 44,
         columnNumber: 5
     }, undefined);
 };
-_s(LoginView, "fwyq1IBgrTI7+cNeIuDWR/ThulE=");
+_s(LoginView, "QMPl3tchD3a+CakFWkbNfxVuEUY=");
 _c = LoginView;
 var _c;
 $RefreshReg$(_c, "LoginView");

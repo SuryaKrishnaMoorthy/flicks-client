@@ -1,43 +1,33 @@
 import { useState } from "react";
 
-/**
- * 
-username: 167OLdP5BUfLZGxP
-password: K39eKYhPMV9DDWhJ 
- */
-
-export const LoginView = ({ onLoggedIn }) => {
+export const SignUpView = ({ onLoggedIn }) => {
   const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [birthday, setBirthday] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       Username: userName,
       Password: password,
+      Email: email,
+      Birthday: birthday,
     };
 
-    fetch("https://flicks-api-24f25506e519.herokuapp.com/login", {
+    fetch("https://flicks-api-24f25506e519.herokuapp.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Login Response: ", data);
-        if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
-        } else {
-          alert("No such User!");
-        }
-      })
-      .catch((err) => {
-        console.log("Error: ", err.message);
-      });
+    }).then((res) => {
+      if (res.ok) {
+        onLoggedIn(userName);
+      } else {
+        alert("Signup Failed!");
+      }
+    });
   };
 
   return (
@@ -66,8 +56,26 @@ export const LoginView = ({ onLoggedIn }) => {
           required
         />
       </label>
+      <label htmlFor="">
+        Email:
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </label>
+      <label htmlFor="">
+        Birthday:
+        <input
+          type="date"
+          value={birthday}
+          onChange={(e) => setBirthday(e.target.value)}
+          required
+        />
+      </label>
       <button type="submit" style={{ width: "40%", marginTop: "2%" }}>
-        Login
+        Sign Up
       </button>
     </form>
   );
