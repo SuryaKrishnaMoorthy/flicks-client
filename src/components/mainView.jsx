@@ -2,14 +2,21 @@ import { useState, useEffect } from "react";
 import { movies } from "../../assets/movies";
 import { MovieCard } from "./movieCard";
 import { MovieView } from "./movieView";
+import { LoginView } from "./loginView";
 
 export const MainView = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
+    if (!token) return;
     const getBooks = fetch(
-      "https://flicks-api-24f25506e519.herokuapp.com/movies"
+      "https://flicks-api-24f25506e519.herokuapp.com/movies",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
     )
       .then((res) => res.json())
       .then((data) => {
@@ -35,13 +42,24 @@ export const MainView = () => {
         console.log(books);
         setMoviesList(books);
       });
-  }, []);
+  }, [token]);
 
   const handleBackClick = () => setSelectedMovie(null);
 
   const handleClick = (movie) => {
     setSelectedMovie(movie);
   };
+
+  if (!user) {
+    return (
+      <LoginView
+        onLoggedIn={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
+    );
+  }
 
   if (selectedMovie) {
     return (
@@ -54,12 +72,26 @@ export const MainView = () => {
   }
 
   return (
-    <div>
-      {moviesList.map((movie) => {
-        return (
-          <MovieCard onMovieClick={handleClick} key={movie.id} movie={movie} />
-        );
-      })}
-    </div>
+    <>
+      <button
+        onClick={() => {
+          setToken(null);
+          setUser(null);
+        }}
+      >
+        Logout
+      </button>
+      <div>
+        {moviesList.map((movie) => {
+          return (
+            <MovieCard
+              onMovieClick={handleClick}
+              key={movie.id}
+              movie={movie}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
