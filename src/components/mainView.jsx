@@ -3,6 +3,7 @@ import { movies } from "../../assets/movies";
 import { MovieCard } from "./movieCard";
 import { MovieView } from "./movieView";
 import { LoginView } from "./loginView";
+import { SignUpView } from "./signUpView";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -14,7 +15,12 @@ export const MainView = () => {
 
   useEffect(() => {
     if (!token) return;
-    fetch("https://flicks-api-24f25506e519.herokuapp.com/movies")
+    fetch("https://flicks-api-24f25506e519.herokuapp.com/movies", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         const movies = data.map(
@@ -36,7 +42,6 @@ export const MainView = () => {
             Genre,
           })
         );
-        console.log(movies);
         setMoviesList(movies);
       });
   }, [token]);
@@ -49,12 +54,21 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <LoginView
-        onLoggedIn={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
+      <>
+        <LoginView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+        <h3>Or</h3>
+        <SignUpView
+          onLoggedIn={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+      </>
     );
   }
 
@@ -65,7 +79,21 @@ export const MainView = () => {
   }
 
   if (!moviesList.length) {
-    return <h3>No movies found!</h3>;
+    return (
+      <>
+        <button
+          onClick={() => {
+            setToken(null);
+            setUser(null);
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+          }}
+        >
+          Logout
+        </button>
+        <h3>No movies found!</h3>
+      </>
+    );
   }
 
   return (
@@ -74,6 +102,8 @@ export const MainView = () => {
         onClick={() => {
           setToken(null);
           setUser(null);
+          localStorage.removeItem("user");
+          localStorage.removeItem("token");
         }}
       >
         Logout
