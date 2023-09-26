@@ -1,17 +1,20 @@
 import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
+import { Button } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
 
 export const MovieView = ({ movie, handleBackClick }) => {
   return (
     <div>
       <div>
-        <img
-          style={{ width: "100px" }}
-          src={movie.ImagePath}
+        <Image
+          src="https://miro.medium.com/v2/resize:fit:1033/1*Vv_Fa7_RyvNa9heDTqUc1g.png"
           alt={movie.Title}
+          fluid
+          className="mt-5"
         />
       </div>
-      <div>
+      <div className="mt-5">
         <span>Title:</span>
         <span>{movie.Title}</span>
       </div>
@@ -32,11 +35,11 @@ export const MovieView = ({ movie, handleBackClick }) => {
           </span>
         ))}
       </div>
-      <div>
+      <div className="mb-5">
         <span>Description: </span>
         <span>{movie.Description}</span>
       </div>
-      <button onClick={handleBackClick}>Back</button>
+      <Button onClick={handleBackClick}>Back</Button>
     </div>
   );
 };

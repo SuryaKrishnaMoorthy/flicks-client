@@ -1,12 +1,13 @@
 import { createRoot } from "react-dom/client";
+import Container from "react-bootstrap/Container";
 import { MainView } from "./components/mainView";
 import "./index.scss";
 
 const FlicksApp = () => {
   return (
-    <div className="flicks">
+    <Container className="flicks">
       <MainView />
-    </div>
+    </Container>
   );
 };
 

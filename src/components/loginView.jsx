@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 /**
  * 
 username: 167OLdP5BUfLZGxP
@@ -41,34 +42,34 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <form
+    <Form
       action=""
       onSubmit={handleSubmit}
       style={{ display: "flex", flexDirection: "column" }}
     >
-      <label htmlFor="">
-        Username:
-        <input
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username</Form.Label>
+        <Form.Control
           type="text"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           required
-          minLength={3}
+          minLength="3"
         />
-      </label>
+      </Form.Group>
 
-      <label htmlFor="">
-        Password:
-        <input
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit" style={{ width: "40%", marginTop: "2%" }}>
+      </Form.Group>
+      <Button type="submit" variant="primary" className="mt-4">
         Login
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };
