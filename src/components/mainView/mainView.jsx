@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { movies } from "../../../assets/movies";
-import { MovieCard } from "../movieCard";
-import { MovieView } from "../movieView";
-import { LoginView } from "../loginView/loginView";
-import { SignUpView } from "../signUpView";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { MovieCard } from "./movieCard";
+import { MovieView } from "./movieView";
+import { LoginView } from "./loginView";
+import { SignUpView } from "./signUpView";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -42,6 +44,7 @@ export const MainView = () => {
             Genre,
           })
         );
+        console.log(movies, "64acb018477cd1343bf31702");
         setMoviesList(movies);
       });
   }, [token]);
@@ -52,73 +55,69 @@ export const MainView = () => {
     setSelectedMovie(movie);
   };
 
-  if (!user) {
-    return (
-      <>
-        <LoginView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-        <h3>Or</h3>
-        <SignUpView
-          onLoggedIn={(user, token) => {
-            setUser(user);
-            setToken(token);
-          }}
-        />
-      </>
-    );
-  }
-
-  if (selectedMovie) {
-    return (
-      <MovieView movie={selectedMovie} handleBackClick={handleBackClick} />
-    );
-  }
-
-  if (!moviesList.length) {
-    return (
-      <>
-        <button
-          onClick={() => {
-            setToken(null);
-            setUser(null);
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-          }}
-        >
-          Logout
-        </button>
-        <h3>No movies found!</h3>
-      </>
-    );
-  }
-
   return (
-    <>
-      <button
-        onClick={() => {
-          setToken(null);
-          setUser(null);
-          localStorage.removeItem("user");
-          localStorage.removeItem("token");
-        }}
-      >
-        Logout
-      </button>
-      <div>
-        {moviesList.map((movie) => {
-          return (
-            <MovieCard
-              onMovieClick={handleClick}
-              key={movie.id}
-              movie={movie}
-            />
-          );
-        })}
-      </div>
-    </>
+    <Row className="justify-content-md-center">
+      {!user ? (
+        <Col md={5}>
+          <LoginView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+          <h3>Or</h3>
+          <SignUpView
+            onLoggedIn={(user, token) => {
+              setUser(user);
+              setToken(token);
+            }}
+          />
+        </Col>
+      ) : selectedMovie ? (
+        <Col md={8}>
+          <MovieView movie={selectedMovie} handleBackClick={handleBackClick} />
+        </Col>
+      ) : !moviesList.length ? (
+        <Col md={8}>
+          <Button
+            onClick={() => {
+              setToken(null);
+              setUser(null);
+              localStorage.removeItem("user");
+              localStorage.removeItem("token");
+            }}
+          >
+            Logout
+          </Button>
+          <h3>No movies found!</h3>
+        </Col>
+      ) : (
+        <>
+          <Button
+            type="button"
+            className="mb-5 mt-5"
+            onClick={() => {
+              setToken(null);
+              setUser(null);
+              localStorage.removeItem("user");
+              localStorage.removeItem("token");
+            }}
+          >
+            Logout
+          </Button>
+          {moviesList.map((movie) => {
+            return (
+              <Col md={3} xs={6} sm={4} className="mb-4">
+                <MovieCard
+                  onMovieClick={handleClick}
+                  key={movie.id}
+                  movie={movie}
+                />
+              </Col>
+            );
+          })}
+        </>
+      )}
+    </Row>
   );
 };

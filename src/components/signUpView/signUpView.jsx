@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export const SignUpView = () => {
   const [userName, setUserName] = useState("");
@@ -38,25 +40,21 @@ export const SignUpView = () => {
 
   return (
     <>
-      <form
-        action=""
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column" }}
-      >
-        <label htmlFor="">
-          Username:
-          <input
+      <Form action="" onSubmit={handleSubmit}>
+        <Form.Group controlId="signUpFormUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             required
             minLength={3}
           />
-        </label>
+        </Form.Group>
 
-        <label htmlFor="">
-          Password:
-          <input
+        <Form.Group controlId="signUpFormPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
             type="password"
             value={password}
             minLength={8}
@@ -64,29 +62,32 @@ export const SignUpView = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <label htmlFor="">
-          Email:
-          <input
+        </Form.Group>
+
+        <Form.Group controlId="signUpFormEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
-        <label htmlFor="">
-          Birthday:
-          <input
+        </Form.Group>
+
+        <Form.Group controlId="signUpFormBirthday">
+          <Form.Label>Birthday</Form.Label>
+          <Form.Control
             type="date"
             value={birthday}
             onChange={(e) => setBirthday(e.target.value)}
             required
           />
-        </label>
-        <button type="submit" style={{ width: "40%", marginTop: "2%" }}>
+        </Form.Group>
+
+        <Button variant="primary" type="submit" className="mt-4">
           Sign Up
-        </button>
-      </form>
+        </Button>
+      </Form>
 
       {signupSuccess && (
         <h4 style={{ color: "green" }}>
