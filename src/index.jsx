@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import { MainView } from "./components/mainView";
+import { MainView } from "./components/mainView/mainView";
 import "./index.scss";
 
 const FlicksApp = () => {
