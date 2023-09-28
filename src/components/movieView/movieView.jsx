@@ -2,8 +2,12 @@ import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
+import { useParams, Link } from "react-router-dom";
+export const MovieView = ({ movies }) => {
+  const { movieName } = useParams();
+  const movie = movies.find((movie) => movie.Title === movieName);
 
-export const MovieView = ({ movie, handleBackClick }) => {
+  console.log(movieName);
   return (
     <div>
       <div>
@@ -39,22 +43,25 @@ export const MovieView = ({ movie, handleBackClick }) => {
         <span>Description: </span>
         <span>{movie.Description}</span>
       </div>
-      <Button onClick={handleBackClick}>Back</Button>
+      <Link to="/">
+        <Button type="button">Back</Button>
+      </Link>
     </div>
   );
 };
 
 MovieView.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string,
-    ImagePath: PropTypes.string,
-    Director: PropTypes.shape({
-      Name: PropTypes.string,
-    }),
-    Actors: PropTypes.array,
-    Genre: PropTypes.shape({ Name: PropTypes.string }),
-  }).isRequired,
-  handleBackClick: PropTypes.func.isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string,
+      ImagePath: PropTypes.string,
+      Director: PropTypes.shape({
+        Name: PropTypes.string,
+      }),
+      Actors: PropTypes.array,
+      Genre: PropTypes.shape({ Name: PropTypes.string }),
+    })
+  ).isRequired,
 };

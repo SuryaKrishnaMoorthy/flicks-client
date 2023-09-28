@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import Container from "react-bootstrap/Container";
-import { MainView } from "./components/mainView";
+import { MainView } from "./components/mainView/mainView";
 import "./index.scss";
 
 const FlicksApp = () => {
