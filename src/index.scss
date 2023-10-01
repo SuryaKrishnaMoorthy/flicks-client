@@ -6,5 +6,13 @@ $body-bg: Black;
 $fontColor: white;
 
 .flicks {
-  color: $color;
+  color: $body-bg;
+}
+
+.textColor {
+  color: $body-bg;
+}
+
+.floatRight {
+  float: right;
 }

@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { useParams, Link } from "react-router-dom";
+
 export const MovieView = ({ movies }) => {
   const { movieName } = useParams();
   const movie = movies.find((movie) => movie.Title === movieName);
 
-  console.log(movieName);
   return (
     <div>
       <div>

@@ -13179,8 +13179,12 @@ textarea.form-control-lg {
   }
 }
 
-.flicks {
-  color: #4682b4;
+.flicks, .textColor {
+  color: #000;
+}
+
+.floatRight {
+  float: right;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
