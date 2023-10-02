@@ -58,7 +58,7 @@ export const UpdateInfo = ({ user, handleUpdate }) => {
   };
 
   return (
-    <div>
+    <>
       <Form action="" onSubmit={handleSubmit}>
         <Form.Group controlId="updationFormUsername">
           <Form.Label>Username</Form.Label>
@@ -108,11 +108,7 @@ export const UpdateInfo = ({ user, handleUpdate }) => {
           Update
         </Button>
       </Form>
-      {editSuccess && (
-        <>
-          <p variant="primary">Successfully updated</p>
-        </>
-      )}
-    </div>
+      {editSuccess && <p variant="primary">Successfully updated</p>}
+    </>
   );
 };

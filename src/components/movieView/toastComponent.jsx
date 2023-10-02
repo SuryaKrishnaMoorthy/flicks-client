@@ -10,7 +10,7 @@ export const ToastComponent = ({ toastText, movie }) => {
   const handleAddToFavorites = () => {
     const url = `https://flicks-api-24f25506e519.herokuapp.com/users/${
       JSON.parse(localStorage.getItem("user"))._id
-    }/${movie.id}`;
+    }/${movie._id}`;
     const token = localStorage.getItem("token");
 
     fetch(url, {
@@ -24,12 +24,12 @@ export const ToastComponent = ({ toastText, movie }) => {
         if (response.ok) {
           setShow(true);
         } else {
-          setShow(fasle);
+          setShow(false);
         }
       })
       .catch((error) => {
         console.log(error.message);
-        setShow(fasle);
+        setShow(false);
       });
   };
 

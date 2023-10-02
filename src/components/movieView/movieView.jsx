@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
@@ -6,17 +6,32 @@ import Image from "react-bootstrap/Image";
 import { useParams, Link } from "react-router-dom";
 import { ToastComponent } from "./toastComponent";
 
-export const MovieView = ({ movies }) => {
+export const MovieView = () => {
   const { movieName } = useParams();
-  const movie = movies.find((movie) => movie.Title === movieName);
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    const url = `https://flicks-api-24f25506e519.herokuapp.com/movies/${movieName}`;
+    const token = localStorage.getItem("token");
+
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setMovie(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>
       <div>
         <Image
-          src="https://miro.medium.com/v2/resize:fit:1033/1*Vv_Fa7_RyvNa9heDTqUc1g.png"
-          alt={movie.Title}
-          fluid
+          // src={`./${movie.ImagePath}`}
+          src="https://lumiere-a.akamaihd.net/v1/images/p_thelionking_19752_1_0b9de87b.jpeg?region=0%2C0%2C540%2C810"
+          alt={movie?.Title}
           className="mt-3 w-50"
         />
       </div>
@@ -24,28 +39,28 @@ export const MovieView = ({ movies }) => {
         <span>
           <b>Title:</b>
         </span>
-        <span>{movie.Title}</span>
+        <span>{movie?.Title}</span>
       </div>
       <div>
         <span>
           <b>Director: </b>
         </span>
-        <span>{movie.Director.Name}</span>
+        <span>{movie?.Director?.Name}</span>
       </div>
       <div>
         <span>
           <b>Genre: </b>
         </span>
-        <span>{movie.Genre.Name}</span>
+        <span>{movie?.Genre?.Name}</span>
       </div>
       <div>
         <span>
           <b>Actors: </b>
         </span>
-        {movie.Actors.map((actor, i) => (
+        {movie?.Actors?.map((actor, i) => (
           <span key={uuidv4()}>
             {actor}
-            {i !== movie.Actors.length - 1 && ", "}
+            {i !== movie?.Actors?.length - 1 && ", "}
           </span>
         ))}
       </div>
@@ -53,7 +68,7 @@ export const MovieView = ({ movies }) => {
         <span>
           <b>Description: </b>
         </span>
-        <span>{movie.Description}</span>
+        <span>{movie?.Description}</span>
       </div>
       <div className="d-flex">
         <Link to="/">
@@ -62,24 +77,10 @@ export const MovieView = ({ movies }) => {
           </Button>
         </Link>
 
-        <ToastComponent toastText="Add to Favorite Movies" movie={movie} />
+        {movie && (
+          <ToastComponent toastText="Add to Favorite Movies" movie={movie} />
+        )}
       </div>
     </div>
   );
-};
-
-MovieView.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      Title: PropTypes.string.isRequired,
-      Description: PropTypes.string,
-      ImagePath: PropTypes.string,
-      Director: PropTypes.shape({
-        Name: PropTypes.string,
-      }),
-      Actors: PropTypes.array,
-      Genre: PropTypes.shape({ Name: PropTypes.string }),
-    })
-  ).isRequired,
 };

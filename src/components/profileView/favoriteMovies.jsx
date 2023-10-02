@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Card, Container } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import CloseButton from "react-bootstrap/CloseButton";
 
 import { Link } from "react-router-dom";
@@ -54,7 +54,7 @@ export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
             <p className="mt-5">No Favorite movies yet!</p>
           </Col>
         ) : (
-          favMovies.map(({ id, Title, Genre }) => {
+          favMovies.map(({ id, Title, Genre, ImagePath }) => {
             return (
               <Col md={3} xs={6} sm={4} className="mb-4" key={id}>
                 <Card
@@ -65,8 +65,7 @@ export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
                   <Card.Img
                     variant="top"
                     className="h-100"
-                    fluid
-                    src="https://miro.medium.com/v2/resize:fit:1033/1*Vv_Fa7_RyvNa9heDTqUc1g.png"
+                    src={`./${ImagePath}`}
                   />
                   <Card.Body>
                     <Card.Title>{Title}</Card.Title>

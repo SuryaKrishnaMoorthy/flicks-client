@@ -50,10 +50,6 @@ export const MainView = () => {
       });
   }, [token]);
 
-  const handleClick = (movie) => {
-    setSelectedMovie(movie);
-  };
-
   const handleLogout = () => {
     setToken(null);
     setUser(null);
@@ -114,7 +110,7 @@ export const MainView = () => {
                     <Navigate to="/login" />
                   ) : (
                     <Col md={8}>
-                      <MovieView movies={moviesList} />
+                      <MovieView />
                     </Col>
                   )}
                 </>
@@ -154,12 +150,14 @@ export const MainView = () => {
                     <>
                       {moviesList.map((movie) => {
                         return (
-                          <Col md={3} xs={6} sm={4} className="mb-4">
-                            <MovieCard
-                              onMovieClick={handleClick}
-                              key={movie.id}
-                              movie={movie}
-                            />
+                          <Col
+                            key={movie.id}
+                            md={3}
+                            xs={6}
+                            sm={4}
+                            className="mb-4"
+                          >
+                            <MovieCard movie={movie} />
                           </Col>
                         );
                       })}

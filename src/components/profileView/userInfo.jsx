@@ -13,10 +13,10 @@ export const UserInfo = ({ username, email, birthday }) => {
   const birthYear = new Date(birthday).getFullYear();
 
   return (
-    <div className="mt-5">
+    <>
       <p>Name: {username}</p>
       <p>Email: {email}</p>
       <p>Birthday: {`${birthMonth}/${birthDate}/${birthYear}`}</p>
-    </div>
+    </>
   );
 };

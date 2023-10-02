@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export const MovieCard = ({ movie, onMovieClick }) => {
+export const MovieCard = ({ movie }) => {
   return (
     <Card
       as={Link}
@@ -13,7 +13,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         variant="top"
         className="h-100"
         fluid
-        src="https://miro.medium.com/v2/resize:fit:1033/1*Vv_Fa7_RyvNa9heDTqUc1g.png"
+        src={`./${movie.ImagePath}`}
       />
       <Card.Body>
         <Card.Title>{movie.Title}</Card.Title>
@@ -35,5 +35,4 @@ MovieCard.propTypes = {
     Actors: PropTypes.array.isRequired,
     Genre: PropTypes.shape({ Name: PropTypes.string }).isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired,
 };
