@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { Card, Container, Button } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
@@ -17,6 +17,24 @@ export const ProfileView = ({ movies, handleLogout }) => {
   const [updatedUser, setUpdatedUser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
+
+  useEffect(() => {
+    const url = `https://flicks-api-24f25506e519.herokuapp.com/users/${updatedUser._id}`;
+
+    const token = localStorage.getItem("token");
+
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUpdatedUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
+      });
+  }, []);
 
   const { Username, Email, Password, Birthday, FavoriteMovies, _id } =
     updatedUser;
@@ -39,7 +57,6 @@ export const ProfileView = ({ movies, handleLogout }) => {
   };
 
   const handleDeregister = () => {
-    console.log("Deregister");
     const url = `https://flicks-api-24f25506e519.herokuapp.com/users/${updatedUser._id}`;
 
     const token = localStorage.getItem("token");
@@ -120,6 +137,7 @@ export const ProfileView = ({ movies, handleLogout }) => {
         <FavoriteMoviesComponent
           user={{ Username, Email, Password, Birthday, FavoriteMovies, _id }}
           favMovies={getFavoriteMovies()}
+          handleUpdate={handleUpdate}
         />
       </Container>
     </>

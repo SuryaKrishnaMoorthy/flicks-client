@@ -6,7 +6,7 @@ import CloseButton from "react-bootstrap/CloseButton";
 
 import { Link } from "react-router-dom";
 
-export const FavoriteMoviesComponent = ({ user, favMovies }) => {
+export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
   const handleDelete = (movieId) => {
     const url = `https://flicks-api-24f25506e519.herokuapp.com/users/${user._id}/${movieId}`;
     const token = localStorage.getItem("token");
@@ -18,9 +18,27 @@ export const FavoriteMoviesComponent = ({ user, favMovies }) => {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((e) => console.log(e.message));
+      .then((res) => {
+        //Get the updated user after deletion of movie
+        if (res.ok) {
+          fetch(
+            `https://flicks-api-24f25506e519.herokuapp.com/users/${user._id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              handleUpdate(data);
+              localStorage.setItem("user", JSON.stringify(data));
+            })
+            .catch((err) => console.log(err.message));
+        }
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (

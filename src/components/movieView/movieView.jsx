@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { useParams, Link } from "react-router-dom";
+import { ToastComponent } from "./toastComponent";
 
 export const MovieView = ({ movies }) => {
   const { movieName } = useParams();
@@ -15,23 +17,31 @@ export const MovieView = ({ movies }) => {
           src="https://miro.medium.com/v2/resize:fit:1033/1*Vv_Fa7_RyvNa9heDTqUc1g.png"
           alt={movie.Title}
           fluid
-          className="mt-5"
+          className="mt-3 w-50"
         />
       </div>
-      <div className="mt-5">
-        <span>Title:</span>
+      <div className="mt-3">
+        <span>
+          <b>Title:</b>
+        </span>
         <span>{movie.Title}</span>
       </div>
       <div>
-        <span>Director: </span>
+        <span>
+          <b>Director: </b>
+        </span>
         <span>{movie.Director.Name}</span>
       </div>
       <div>
-        <span>Genre: </span>
+        <span>
+          <b>Genre: </b>
+        </span>
         <span>{movie.Genre.Name}</span>
       </div>
       <div>
-        <span>Actors: </span>
+        <span>
+          <b>Actors: </b>
+        </span>
         {movie.Actors.map((actor, i) => (
           <span key={uuidv4()}>
             {actor}
@@ -39,13 +49,21 @@ export const MovieView = ({ movies }) => {
           </span>
         ))}
       </div>
-      <div className="mb-5">
-        <span>Description: </span>
+      <div className="mb-2">
+        <span>
+          <b>Description: </b>
+        </span>
         <span>{movie.Description}</span>
       </div>
-      <Link to="/">
-        <Button type="button">Back</Button>
-      </Link>
+      <div className="d-flex">
+        <Link to="/">
+          <Button variant="light" className="btn me-5">
+            Back
+          </Button>
+        </Link>
+
+        <ToastComponent toastText="Add to Favorite Movies" movie={movie} />
+      </div>
     </div>
   );
 };

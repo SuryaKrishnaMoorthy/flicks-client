@@ -9,10 +9,31 @@ $fontColor: white;
   color: $body-bg;
 }
 
-.textColor {
-  color: $body-bg;
+.btn {
+  background-color: $body-bg;
+  color: $fontColor;
+  opacity: 1;
+}
+
+.btn:hover {
+  background-color: $body-bg;
+  color: $fontColor;
+  opacity: 0.8;
+  transition: 0.3s;
+  border: none;
 }
 
 .floatRight {
   float: right;
+}
+
+.toast {
+  background-color: salmon;
+  color: white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
