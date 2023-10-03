@@ -34,13 +34,13 @@ export const ToastComponent = ({ toastText, movie }) => {
   };
 
   return (
-    <Row>
-      <Col xs={6}>
+    <>
+      <Col xs={4}>
         <Button className="text-nowrap" onClick={handleAddToFavorites}>
           {toastText}
         </Button>
       </Col>
-      <Col xs={6}>
+      <Col xs={4}>
         <Toast
           position="top-end"
           onClose={() => setShow(false)}
@@ -52,6 +52,6 @@ export const ToastComponent = ({ toastText, movie }) => {
           <Toast.Body>{`${movie.Title} has been added to favorites`}</Toast.Body>
         </Toast>
       </Col>
-    </Row>
+    </>
   );
 };

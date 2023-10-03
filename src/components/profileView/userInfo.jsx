@@ -1,4 +1,5 @@
 import React from "react";
+import { Card } from "react-bootstrap";
 
 export const UserInfo = ({ username, email, birthday }) => {
   const birthMonth =
@@ -13,10 +14,26 @@ export const UserInfo = ({ username, email, birthday }) => {
   const birthYear = new Date(birthday).getFullYear();
 
   return (
-    <>
-      <p>Name: {username}</p>
-      <p>Email: {email}</p>
-      <p>Birthday: {`${birthMonth}/${birthDate}/${birthYear}`}</p>
-    </>
+    // <>
+    <Card>
+      <Card.Body>
+        <Card.Title>{"Your Info"}</Card.Title>
+        <Card.Text>
+          <span>Name: {username}</span>
+          <br />
+          <span>Email: {email}</span>
+          <br />
+          <span>Birthday: {`${birthMonth}/${birthDate}/${birthYear}`}</span>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
+{
+  /* <p>Name: {username}</p>
+      <p>Email: {email}</p>
+      <p>Birthday: {`${birthMonth}/${birthDate}/${birthYear}`}</p> */
+}
+{
+  /* </> */
+}

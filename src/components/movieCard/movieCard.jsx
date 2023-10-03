@@ -12,7 +12,7 @@ export const MovieCard = ({ movie }) => {
       <Card.Img
         variant="top"
         className="h-100"
-        fluid
+        fluid="true"
         src={`./${movie.ImagePath}`}
       />
       <Card.Body>
@@ -25,7 +25,7 @@ export const MovieCard = ({ movie }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    _id: PropTypes.string.isRequired,
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,

@@ -1,12 +1,14 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { v4 as uuidv4 } from "uuid";
 import { Card } from "react-bootstrap";
 import CloseButton from "react-bootstrap/CloseButton";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
+  const navigate = useNavigate();
   const handleDelete = (movieId) => {
     const url = `https://flicks-api-24f25506e519.herokuapp.com/users/${user._id}/${movieId}`;
     const token = localStorage.getItem("token");
@@ -20,6 +22,7 @@ export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
     })
       .then((res) => {
         //Get the updated user after deletion of movie
+        navigate("/profile", { replace: true });
         if (res.ok) {
           fetch(
             `https://flicks-api-24f25506e519.herokuapp.com/users/${user._id}`,
@@ -54,31 +57,45 @@ export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
             <p className="mt-5">No Favorite movies yet!</p>
           </Col>
         ) : (
-          favMovies.map(({ id, Title, Genre, ImagePath }) => {
+          favMovies.map(({ _id, Title, Genre, ImagePath }) => {
             return (
-              <Col md={3} xs={6} sm={4} className="mb-4" key={id}>
+              <Col md={4} xs={6} sm={4} className="mb-4" key={uuidv4()}>
                 <Card
-                  as={Link}
-                  to={`/movies/${encodeURIComponent(Title)}`}
+                  // as={Link}
+                  // to={`/movies/${encodeURIComponent(Title)}`}
                   style={{ cursor: "pointer", textDecoration: "none" }}
                 >
                   <Card.Img
                     variant="top"
                     className="h-100"
                     src={`./${ImagePath}`}
+                    onClick={() =>
+                      navigate(`/movies/${encodeURIComponent(Title)}`, {
+                        replace: true,
+                      })
+                    }
                   />
-                  <Card.Body>
+                  <Card.Body
+                    onClick={() =>
+                      navigate(`/movies/${encodeURIComponent(Title)}`, {
+                        replace: true,
+                      })
+                    }
+                  >
                     <Card.Title>{Title}</Card.Title>
                     <Card.Text>Genre: {Genre.Name}</Card.Text>
+                  </Card.Body>
+                  <Card.Body>
                     <Card.Link
                       as={Link}
                       to={`/movies/${encodeURIComponent(Title)}`}
                     >
                       Details
                     </Card.Link>
-                    <Card.Link as={Link} to={`/profile`} className="floatRight">
-                      <CloseButton onClick={() => handleDelete(id)} />
-                    </Card.Link>
+                    <CloseButton
+                      onClick={() => handleDelete(_id)}
+                      className="floatRight"
+                    />
                   </Card.Body>
                 </Card>
               </Col>

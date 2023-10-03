@@ -27,27 +27,9 @@ export const MainView = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        const movies = data.map(
-          ({
-            _id,
-            Title,
-            Description,
-            ImagePath,
-            Director,
-            Actors,
-            Genre,
-          }) => ({
-            id: _id,
-            Title,
-            Description,
-            ImagePath,
-            Director,
-            Actors,
-            Genre,
-          })
-        );
-        setMoviesList(movies);
-      });
+        setMoviesList(data);
+      })
+      .catch((error) => console.log(error.message));
   }, [token]);
 
   const handleLogout = () => {
@@ -147,21 +129,19 @@ export const MainView = () => {
                       <h3>No movies found!</h3>
                     </Col>
                   ) : (
-                    <>
-                      {moviesList.map((movie) => {
-                        return (
-                          <Col
-                            key={movie.id}
-                            md={3}
-                            xs={6}
-                            sm={4}
-                            className="mb-4"
-                          >
-                            <MovieCard movie={movie} />
-                          </Col>
-                        );
-                      })}
-                    </>
+                    moviesList.map((movie) => {
+                      return (
+                        <Col
+                          key={movie._id}
+                          md={3}
+                          xs={6}
+                          sm={4}
+                          className="mb-4"
+                        >
+                          <MovieCard movie={movie} />
+                        </Col>
+                      );
+                    })
                   )}
                 </>
               }

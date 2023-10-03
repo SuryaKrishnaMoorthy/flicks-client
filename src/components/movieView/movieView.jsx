@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import { useParams, Link } from "react-router-dom";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+import { useParams, useNavigate } from "react-router-dom";
 import { ToastComponent } from "./toastComponent";
 
 export const MovieView = () => {
+  const navigate = useNavigate();
   const { movieName } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -29,10 +32,11 @@ export const MovieView = () => {
     <div>
       <div>
         <Image
-          // src={`./${movie.ImagePath}`}
+          // src={`./${movie?.ImagePath}`}
           src="https://lumiere-a.akamaihd.net/v1/images/p_thelionking_19752_1_0b9de87b.jpeg?region=0%2C0%2C540%2C810"
           alt={movie?.Title}
-          className="mt-3 w-50"
+          style={{ width: "40%" }}
+          className="mt-3"
         />
       </div>
       <div className="mt-3">
@@ -70,17 +74,20 @@ export const MovieView = () => {
         </span>
         <span>{movie?.Description}</span>
       </div>
-      <div className="d-flex">
-        <Link to="/">
-          <Button variant="light" className="btn me-5">
+      <Row className="d-flex mb-4">
+        <Col xs={4}>
+          <Button
+            variant="light"
+            className="btn me-5"
+            onClick={() => navigate(-1)}
+          >
             Back
           </Button>
-        </Link>
-
+        </Col>
         {movie && (
           <ToastComponent toastText="Add to Favorite Movies" movie={movie} />
         )}
-      </div>
+      </Row>
     </div>
   );
 };

@@ -15,7 +15,7 @@ export const DeRegisterModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p style={{ "text-align": "center" }}>Do you want to continue?</p>
+        <p style={{ textAlign: "center" }}>Do you want to continue?</p>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={props.onHide}>

@@ -44,7 +44,7 @@ export const ProfileView = ({ movies, handleLogout }) => {
     const favMoviesIds = FavoriteMovies;
     for (let i = 0; i < movies.length; i++) {
       for (let j = 0; j < favMoviesIds?.length; j++) {
-        if (movies[i].id === favMoviesIds[j]) {
+        if (movies[i]._id === favMoviesIds[j]) {
           favoriteMoviesList.push(movies[i]);
         }
       }
@@ -83,63 +83,51 @@ export const ProfileView = ({ movies, handleLogout }) => {
   return (
     <>
       <h1 className="textColor">Manage Profile</h1>
-      <Container className="textColor">
-        <Row>
-          <Col xs={12} sm={5}>
-            <Card>
-              <Card.Body>
-                <Card.Title>{"Your Info"}</Card.Title>
-                <Card.Text>
-                  <UserInfo
-                    username={Username}
-                    email={Email}
-                    birthday={Birthday}
-                  />
-                </Card.Text>
-              </Card.Body>
-            </Card>
-            <Button
-              variant="danger"
-              className="mt-5"
-              onClick={() => setModalShow(true)}
-            >
-              Deregister
-            </Button>
+      <Row>
+        <Col xs={12} sm={5}>
+          <UserInfo username={Username} email={Email} birthday={Birthday} />
 
-            <DeRegisterModal
-              show={modalShow}
-              onHide={() => setModalShow(false)}
-              handleDeregister={handleDeregister}
-            />
-          </Col>
-          <Col xs={12} sm={7}>
-            <Card>
-              <Card.Body>
-                <Card.Title>{"Update Information"}</Card.Title>
-                <Card.Text>
-                  <UpdateInfo
-                    user={{
-                      Username,
-                      Email,
-                      Password,
-                      Birthday,
-                      FavoriteMovies,
-                      _id,
-                    }}
-                    handleUpdate={handleUpdate}
-                  />
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+          <Button
+            variant="danger"
+            className="mt-5"
+            onClick={() => setModalShow(true)}
+          >
+            Deregister
+          </Button>
 
-        <FavoriteMoviesComponent
-          user={{ Username, Email, Password, Birthday, FavoriteMovies, _id }}
-          favMovies={getFavoriteMovies()}
-          handleUpdate={handleUpdate}
-        />
-      </Container>
+          <DeRegisterModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            handleDeregister={handleDeregister}
+          />
+        </Col>
+        <Col xs={12} sm={7}>
+          <Card>
+            <Card.Body>
+              <Card.Title>{"Update Information"}</Card.Title>
+              {/* <Card.Text> */}
+              <UpdateInfo
+                user={{
+                  Username,
+                  Email,
+                  Password,
+                  Birthday,
+                  FavoriteMovies,
+                  _id,
+                }}
+                handleUpdate={handleUpdate}
+              />
+              {/* </Card.Text> */}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+
+      <FavoriteMoviesComponent
+        user={{ Username, Email, Password, Birthday, FavoriteMovies, _id }}
+        favMovies={getFavoriteMovies()}
+        handleUpdate={handleUpdate}
+      />
     </>
   );
 };
