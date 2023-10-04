@@ -1,11 +1,6 @@
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-/**
- * 
-username: 167OLdP5BUfLZGxP
-password: K39eKYhPMV9DDWhJ 
- */
 
 export const LoginView = ({ onLoggedIn }) => {
   const [userName, setUserName] = useState("");
@@ -27,7 +22,6 @@ export const LoginView = ({ onLoggedIn }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Login Response: ", data);
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);

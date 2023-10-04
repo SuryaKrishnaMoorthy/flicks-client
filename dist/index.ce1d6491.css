@@ -13180,7 +13180,40 @@ textarea.form-control-lg {
 }
 
 .flicks {
-  color: #4682b4;
+  color: #000;
+}
+
+.btn {
+  color: #fff;
+  opacity: 1;
+  background-color: #000;
+}
+
+.btn:hover {
+  color: #fff;
+  opacity: .8;
+  background-color: #000;
+  border: none;
+  transition: all .3s;
+}
+
+.floatRight {
+  float: right;
+}
+
+.toast {
+  color: #fff;
+  background-color: salmon;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

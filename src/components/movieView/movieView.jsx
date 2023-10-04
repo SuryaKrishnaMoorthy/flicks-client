@@ -1,60 +1,93 @@
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-export const MovieView = ({ movie, handleBackClick }) => {
+import { ToastComponent } from "./toastComponent";
+
+export const MovieView = () => {
+  const navigate = useNavigate();
+  const { movieName } = useParams();
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    const url = `https://flicks-api-24f25506e519.herokuapp.com/movies/${movieName}`;
+    const token = localStorage.getItem("token");
+
+    fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setMovie(data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <div>
         <Image
-          src="https://miro.medium.com/v2/resize:fit:1033/1*Vv_Fa7_RyvNa9heDTqUc1g.png"
-          alt={movie.Title}
-          fluid
-          className="mt-5"
+          // src={`./${movie?.ImagePath}`}
+          src="https://lumiere-a.akamaihd.net/v1/images/p_thelionking_19752_1_0b9de87b.jpeg?region=0%2C0%2C540%2C810"
+          alt={movie?.Title}
+          style={{ width: "40%" }}
+          className="mt-3"
         />
       </div>
-      <div className="mt-5">
-        <span>Title:</span>
-        <span>{movie.Title}</span>
+      <div className="mt-3">
+        <span>
+          <b>Title:</b>
+        </span>
+        <span>{movie?.Title}</span>
       </div>
       <div>
-        <span>Director: </span>
-        <span>{movie.Director.Name}</span>
+        <span>
+          <b>Director: </b>
+        </span>
+        <span>{movie?.Director?.Name}</span>
       </div>
       <div>
-        <span>Genre: </span>
-        <span>{movie.Genre.Name}</span>
+        <span>
+          <b>Genre: </b>
+        </span>
+        <span>{movie?.Genre?.Name}</span>
       </div>
       <div>
-        <span>Actors: </span>
-        {movie.Actors.map((actor, i) => (
+        <span>
+          <b>Actors: </b>
+        </span>
+        {movie?.Actors?.map((actor, i) => (
           <span key={uuidv4()}>
             {actor}
-            {i !== movie.Actors.length - 1 && ", "}
+            {i !== movie?.Actors?.length - 1 && ", "}
           </span>
         ))}
       </div>
-      <div className="mb-5">
-        <span>Description: </span>
-        <span>{movie.Description}</span>
+      <div className="mb-2">
+        <span>
+          <b>Description: </b>
+        </span>
+        <span>{movie?.Description}</span>
       </div>
-      <Button onClick={handleBackClick}>Back</Button>
+      <Row className="d-flex mb-4">
+        <Col xs={4}>
+          <Button
+            variant="light"
+            className="btn me-5"
+            onClick={() => navigate(-1)}
+          >
+            Back
+          </Button>
+        </Col>
+        {movie && (
+          <ToastComponent toastText="Add to Favorite Movies" movie={movie} />
+        )}
+      </Row>
     </div>
   );
-};
-
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    Title: PropTypes.string.isRequired,
-    Description: PropTypes.string,
-    ImagePath: PropTypes.string,
-    Director: PropTypes.shape({
-      Name: PropTypes.string,
-    }),
-    Actors: PropTypes.array,
-    Genre: PropTypes.shape({ Name: PropTypes.string }),
-  }).isRequired,
-  handleBackClick: PropTypes.func.isRequired,
 };
