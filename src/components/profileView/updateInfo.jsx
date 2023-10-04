@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
 
 export const UpdateInfo = ({ user, handleUpdate }) => {
-  const navigate = useNavigate();
-
   const [userName, setUserName] = useState(user?.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user?.Email);

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import { useParams, useNavigate } from "react-router-dom";
 import { ToastComponent } from "./toastComponent";
 
 export const MovieView = () => {

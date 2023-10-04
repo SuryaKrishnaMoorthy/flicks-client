@@ -1,11 +1,10 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { v4 as uuidv4 } from "uuid";
 import { Card } from "react-bootstrap";
 import CloseButton from "react-bootstrap/CloseButton";
-
-import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
   const navigate = useNavigate();
@@ -60,11 +59,7 @@ export const FavoriteMoviesComponent = ({ user, favMovies, handleUpdate }) => {
           favMovies.map(({ _id, Title, Genre, ImagePath }) => {
             return (
               <Col md={4} xs={6} sm={4} className="mb-4" key={uuidv4()}>
-                <Card
-                  // as={Link}
-                  // to={`/movies/${encodeURIComponent(Title)}`}
-                  style={{ cursor: "pointer", textDecoration: "none" }}
-                >
+                <Card style={{ cursor: "pointer", textDecoration: "none" }}>
                   <Card.Img
                     variant="top"
                     className="h-100"

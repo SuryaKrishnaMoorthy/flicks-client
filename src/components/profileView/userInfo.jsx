@@ -11,6 +11,7 @@ export const UserInfo = ({ username, email, birthday }) => {
     parseInt(new Date(birthday).getDate()) + 1 < 10
       ? `0${new Date(birthday).getDate() + 1}`
       : `${new Date(birthday).getDate() + 1}`;
+
   const birthYear = new Date(birthday).getFullYear();
 
   return (
@@ -29,11 +30,3 @@ export const UserInfo = ({ username, email, birthday }) => {
     </Card>
   );
 };
-{
-  /* <p>Name: {username}</p>
-      <p>Email: {email}</p>
-      <p>Birthday: {`${birthMonth}/${birthDate}/${birthYear}`}</p> */
-}
-{
-  /* </> */
-}

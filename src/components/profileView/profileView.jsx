@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-
-import { Card, Container, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+
 import { UserInfo } from "./userInfo";
 import { FavoriteMoviesComponent } from "./favoriteMovies";
 import { UpdateInfo } from "./updateInfo";
@@ -105,7 +104,6 @@ export const ProfileView = ({ movies, handleLogout }) => {
           <Card>
             <Card.Body>
               <Card.Title>{"Update Information"}</Card.Title>
-              {/* <Card.Text> */}
               <UpdateInfo
                 user={{
                   Username,
@@ -117,7 +115,6 @@ export const ProfileView = ({ movies, handleLogout }) => {
                 }}
                 handleUpdate={handleUpdate}
               />
-              {/* </Card.Text> */}
             </Card.Body>
           </Card>
         </Col>
