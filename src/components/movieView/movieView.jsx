@@ -29,18 +29,19 @@ export const MovieView = () => {
   }, []);
 
   console.log(movie);
-  if (!movie) return;
 
   return (
     <div>
       <div>
-        <Image
-          src={`./${movie?.ImagePath}`}
-          // src="https://lumiere-a.akamaihd.net/v1/images/p_thelionking_19752_1_0b9de87b.jpeg?region=0%2C0%2C540%2C810"
-          alt={movie?.Title}
-          style={{ width: "40%" }}
-          className="mt-3"
-        />
+        {movie && (
+          <Image
+            src={`./${movie?.ImagePath}`}
+            // src="https://lumiere-a.akamaihd.net/v1/images/p_thelionking_19752_1_0b9de87b.jpeg?region=0%2C0%2C540%2C810"
+            alt={movie?.Title}
+            style={{ width: "40%" }}
+            className="mt-3"
+          />
+        )}
       </div>
       <div className="mt-3">
         <span>
