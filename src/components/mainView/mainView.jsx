@@ -17,6 +17,7 @@ export const MainView = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     if (!token) return;
@@ -40,9 +41,25 @@ export const MainView = () => {
     localStorage.removeItem("token");
   };
 
+  const filterMovies = (text) => {
+    const filtered = moviesList?.filter((movie) =>
+      movie.Title.toLowerCase().includes(text)
+    );
+    setFilteredMovies(filtered);
+  };
+
+  const handleLoadAllMovies = () => {
+    setFilteredMovies([]);
+  };
+
   return (
     <BrowserRouter>
-      <NavigationBar user={user} onLoggedOut={handleLogout} />
+      <NavigationBar
+        user={user}
+        onLoggedOut={handleLogout}
+        filterMovies={filterMovies}
+        handleLoadAllMovies={handleLoadAllMovies}
+      />
       <Container>
         <Row className="justify-content-md-center">
           <Routes>
@@ -129,6 +146,20 @@ export const MainView = () => {
                     <Col md={8}>
                       <h3>No movies found!</h3>
                     </Col>
+                  ) : filteredMovies.length ? (
+                    filteredMovies.map((movie) => {
+                      return (
+                        <Col
+                          key={movie._id}
+                          md={3}
+                          xs={6}
+                          sm={4}
+                          className="mb-4"
+                        >
+                          <MovieCard movie={movie} />
+                        </Col>
+                      );
+                    })
                   ) : (
                     moviesList.map((movie) => {
                       return (
