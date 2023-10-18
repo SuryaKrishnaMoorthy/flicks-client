@@ -11,6 +11,7 @@ export const SignUpView = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = {
       Username: userName,
       Password: password,
@@ -57,11 +58,17 @@ export const SignUpView = () => {
           <Form.Control
             type="password"
             value={password}
-            minLength={8}
-            maxLength={20}
+            minLength="8"
+            maxLength="20"
             onChange={(e) => setPassword(e.target.value)}
+            aria-describedby="passwordHelpBlock"
             required
           />
+
+          <Form.Text id="passwordHelpBlock" muted>
+            Your password must be 8-20 characters long, contain letters and
+            numbers, and must not contain spaces, special characters, or emoji.
+          </Form.Text>
         </Form.Group>
 
         <Form.Group controlId="signUpFormEmail">

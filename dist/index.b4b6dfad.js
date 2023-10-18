@@ -47057,13 +47057,11 @@ const MovieView = ()=>{
         }).then((res)=>res.json()).then((data)=>setMovie(data)).catch((err)=>console.log(err));
     }, []);
     console.log(movie);
-    if (!movie) return;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imageDefault.default), {
-                    src: `./${movie?.ImagePath}`,
-                    // src="https://lumiere-a.akamaihd.net/v1/images/p_thelionking_19752_1_0b9de87b.jpeg?region=0%2C0%2C540%2C810"
+                children: movie && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _imageDefault.default), {
+                    src: `../${movie?.ImagePath}`,
                     alt: movie?.Title,
                     style: {
                         width: "40%"
@@ -47072,11 +47070,11 @@ const MovieView = ()=>{
                 }, void 0, false, {
                     fileName: "src/components/movieView/movieView.jsx",
                     lineNumber: 37,
-                    columnNumber: 9
+                    columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movieView/movieView.jsx",
-                lineNumber: 36,
+                lineNumber: 35,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -47261,7 +47259,7 @@ const MovieView = ()=>{
         ]
     }, void 0, true, {
         fileName: "src/components/movieView/movieView.jsx",
-        lineNumber: 35,
+        lineNumber: 34,
         columnNumber: 5
     }, undefined);
 };
@@ -48157,7 +48155,7 @@ const SignUpView = ()=>{
                                 children: "Username"
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -48168,13 +48166,13 @@ const SignUpView = ()=>{
                                 minLength: 3
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 46,
+                                lineNumber: 47,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signUpView/signUpView.jsx",
-                        lineNumber: 44,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -48184,25 +48182,35 @@ const SignUpView = ()=>{
                                 children: "Password"
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 56,
+                                lineNumber: 57,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
                                 type: "password",
                                 value: password,
-                                minLength: 8,
-                                maxLength: 20,
+                                minLength: "8",
+                                maxLength: "20",
                                 onChange: (e)=>setPassword(e.target.value),
+                                "aria-describedby": "passwordHelpBlock",
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 57,
+                                lineNumber: 58,
+                                columnNumber: 11
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Text, {
+                                id: "passwordHelpBlock",
+                                muted: true,
+                                children: "Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji."
+                            }, void 0, false, {
+                                fileName: "src/components/signUpView/signUpView.jsx",
+                                lineNumber: 68,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signUpView/signUpView.jsx",
-                        lineNumber: 55,
+                        lineNumber: 56,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -48212,7 +48220,7 @@ const SignUpView = ()=>{
                                 children: "Email"
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 68,
+                                lineNumber: 75,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -48222,13 +48230,13 @@ const SignUpView = ()=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 69,
+                                lineNumber: 76,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signUpView/signUpView.jsx",
-                        lineNumber: 67,
+                        lineNumber: 74,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Group, {
@@ -48238,7 +48246,7 @@ const SignUpView = ()=>{
                                 children: "Birthday"
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 78,
+                                lineNumber: 85,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _formDefault.default).Control, {
@@ -48248,13 +48256,13 @@ const SignUpView = ()=>{
                                 required: true
                             }, void 0, false, {
                                 fileName: "src/components/signUpView/signUpView.jsx",
-                                lineNumber: 79,
+                                lineNumber: 86,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/signUpView/signUpView.jsx",
-                        lineNumber: 77,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _buttonDefault.default), {
@@ -48264,13 +48272,13 @@ const SignUpView = ()=>{
                         children: "Sign Up"
                     }, void 0, false, {
                         fileName: "src/components/signUpView/signUpView.jsx",
-                        lineNumber: 87,
+                        lineNumber: 94,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/signUpView/signUpView.jsx",
-                lineNumber: 43,
+                lineNumber: 44,
                 columnNumber: 7
             }, undefined),
             signupSuccess && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h4", {
@@ -48280,7 +48288,7 @@ const SignUpView = ()=>{
                 children: '"Successfully registered. Please login to see movies!"'
             }, void 0, false, {
                 fileName: "src/components/signUpView/signUpView.jsx",
-                lineNumber: 93,
+                lineNumber: 100,
                 columnNumber: 9
             }, undefined)
         ]
