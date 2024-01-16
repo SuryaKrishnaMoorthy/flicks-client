@@ -21,7 +21,7 @@ export const NavigationBar = ({
   };
 
   return (
-    <Navbar bg="dark" data-bs-theme="dark" className="mb-4">
+    <Navbar bg="dark" data-bs-theme="dark" className="mb-5" sticky="top">
       <Container>
         <Navbar.Brand as={Link} to="/" onClick={handleLoadAllMovies}>
           Flicks

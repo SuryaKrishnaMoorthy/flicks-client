@@ -34,7 +34,7 @@ export const ToastComponent = ({ toastText, movie }) => {
 
   return (
     <>
-      <Col xs={4}>
+      <Col xs={6}>
         <Button className="text-nowrap" onClick={handleAddToFavorites}>
           {toastText}
         </Button>
